@@ -1,0 +1,12 @@
+/* ═══════════════════════════════════════════════════════════════
+   @fatax/design-system · fatax.css
+   v0.6 · Dark Cockpit · BUNDLE
+   ───────────────────────────────────────────────────────────────
+   Single-import bundle. Para consumo seletivo, importe os 4 arquivos
+   individuais (tokens → base → components → sidebar) na ordem.
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('./tokens.css');
+@import url('./base.css');
+@import url('./components.css');
+@import url('./sidebar.css');

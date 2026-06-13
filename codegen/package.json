@@ -1,0 +1,15 @@
+{
+  "name": "@fatax/codegen",
+  "version": "0.6.0",
+  "description": "Codegen do Fatax Design System — lê DESIGN.md (frontmatter YAML) e gera Tailwind config + DTCG JSON + reescreve dist/tokens.css.",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "generate": "node generate.mjs",
+    "check": "node generate.mjs --check"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

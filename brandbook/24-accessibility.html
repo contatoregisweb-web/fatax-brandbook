@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>24 · Accessibility — Fatax Brandbook</title><link rel="stylesheet" href="shared/style.css"/></head>
+<body><div class="app"><div data-include="sidebar"></div><main class="main">
+<div class="topbar"><span class="crumbs"><span>Brandbook</span><span class="sep">/</span><span>Practice</span><span class="sep">/</span><span class="here">Accessibility</span></span><span class="spacer"></span></div>
+<header class="section-header"><div class="left"><div class="eyebrow"><span class="pip"></span>Accessibility</div><h1><span class="accent">Acessibilidade.</span> <span class="dim">WCAG 2.2 AA, mínimo.</span></h1><p class="kicker">Toda peça Fatax precisa atender WCAG 2.2 AA. Não é checklist — é design. Contraste, foco visível, motion-safe, semântica correta. Inegociáveis.</p></div><div class="right"><div class="big">24</div>Accessibility</div></header>
+<div class="content">
+<section class="block"><div class="label"><span class="num">01</span>Contrast</div><div class="body">
+<h2>Contraste — pares aprovados.</h2>
+<p>Texto normal: <strong>4.5:1</strong>. Texto grande/bold: <strong>3:1</strong>. Componentes não-textuais: <strong>3:1</strong>.</p>
+<table class="spec-table">
+<thead><tr><th>Par</th><th>Ratio</th><th>WCAG</th><th>Uso</th></tr></thead>
+<tbody>
+<tr><td><span class="mono">cream + black</span></td><td class="mono">15.9:1</td><td><span class="pill success">AAA</span></td><td>Texto primary</td></tr>
+<tr><td><span class="mono">orange + black</span></td><td class="mono">4.85:1</td><td><span class="pill success">AA</span></td><td>Link, accent</td></tr>
+<tr><td><span class="mono">orange + white</span></td><td class="mono">3.27:1</td><td><span class="pill warning">AA LARGE</span></td><td>Botão (texto bold ≥14px)</td></tr>
+<tr><td><span class="mono">secondary + surface</span></td><td class="mono">5.4:1</td><td><span class="pill success">AA</span></td><td>Texto secundário</td></tr>
+<tr><td><span class="mono">muted + surface</span></td><td class="mono">3.1:1</td><td><span class="pill warning">AA LARGE</span></td><td>Helper · ≥14px</td></tr>
+<tr><td><span class="mono">disabled + surface</span></td><td class="mono">1.5:1</td><td><span class="pill danger">FAIL</span></td><td>Só em texto disabled (não funcional)</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">02</span>Focus</div><div class="body">
+<h2>Foco visível.</h2>
+<p>Foco de teclado <strong>nunca</strong> some. Padrão: ring laranja 2px + offset 2px.</p>
+<div style="background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--r-md); padding:var(--s-2xl); display:flex; gap:var(--s-md); flex-wrap:wrap;">
+<button class="btn btn-primary" style="outline:2px solid var(--brand-orange); outline-offset:2px;">Foco · primary</button>
+<button class="btn btn-secondary" style="outline:2px solid var(--brand-orange); outline-offset:2px;">Foco · secondary</button>
+<input class="ip" style="max-width:200px; border-color:var(--brand-orange); outline:2px solid var(--brand-orange); outline-offset:2px;" value="Foco · input"/>
+</div>
+<pre style="background:var(--surface-sunken); border:1px solid var(--border-soft); border-radius:var(--r-sm); padding:var(--s-lg); font-family:var(--font-mono); font-size:12px; color:var(--brand-cream); overflow-x:auto; line-height:1.6; margin-top:var(--s-md);">
+:focus-visible {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}</pre>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">03</span>Motion</div><div class="body">
+<h2>Motion-safe.</h2>
+<p>Respeitar <span class="mono">prefers-reduced-motion</span>. Movimento decorativo é cortado; movimento essencial (transições de estado) cai pra 0.01ms.</p>
+<pre style="background:var(--surface-sunken); border:1px solid var(--border-soft); border-radius:var(--r-sm); padding:var(--s-lg); font-family:var(--font-mono); font-size:12px; color:var(--brand-cream); overflow-x:auto; line-height:1.6;">
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}</pre>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">04</span>Semantics</div><div class="body">
+<h2>HTML semântico.</h2>
+<table class="spec-table">
+<thead><tr><th>Regra</th><th>Faça</th><th>Não faça</th></tr></thead>
+<tbody>
+<tr><td>Hierarquia</td><td class="mono">h1 → h2 → h3</td><td class="mono">h1 → h3 (pula)</td></tr>
+<tr><td>Botão vs link</td><td class="mono">&lt;button&gt; ação · &lt;a&gt; navegação</td><td class="mono">&lt;div onclick&gt;</td></tr>
+<tr><td>Form labels</td><td class="mono">&lt;label for&gt; explícito</td><td class="mono">placeholder como label</td></tr>
+<tr><td>Imagens</td><td class="mono">alt="" descritivo</td><td class="mono">alt="imagem"</td></tr>
+<tr><td>Listas</td><td class="mono">&lt;ul&gt;/&lt;ol&gt; sempre</td><td class="mono">divs com bullet css</td></tr>
+<tr><td>Live regions</td><td class="mono">aria-live="polite" em toasts</td><td class="mono">notificação muda em silêncio</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">05</span>Lint</div><div class="body">
+<h2>Validação automática.</h2>
+<p>O CLI do DESIGN.md valida contraste de todos os pares de componente. Pre-commit hook obrigatório.</p>
+<pre style="background:var(--surface-sunken); border:1px solid var(--border-soft); border-radius:var(--r-sm); padding:var(--s-lg); font-family:var(--font-mono); font-size:12px; color:var(--brand-cream); overflow-x:auto; line-height:1.6;">
+npx @google/design.md lint DESIGN.md
+
+✓ contrast-ratio: 28 components passed
+⚠ contrast-ratio: orange + white = 3.27:1 — AA LARGE only
+✓ broken-ref: no broken token references
+✓ missing-primary: primary color defined</pre>
+</div></section>
+<div data-pager></div></div>
+</main></div><script src="shared/include.js"></script></body></html>

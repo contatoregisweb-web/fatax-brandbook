@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>14 · Motion — Fatax Brandbook</title>
+<link rel="stylesheet" href="shared/style.css" />
+</head>
+<body>
+<div class="app">
+  <div data-include="sidebar"></div>
+  <main class="main">
+    <div class="topbar">
+      <span class="crumbs"><span>Brandbook</span><span class="sep">/</span><span>Expression</span><span class="sep">/</span><span class="here">Motion</span></span>
+      <span class="spacer"></span>
+    </div>
+    <header class="section-header">
+      <div class="left">
+        <div class="eyebrow"><span class="pip"></span>Motion</div>
+        <h1><span class="accent">Motion.</span> <span class="dim">Movimento como linguagem.</span></h1>
+        <p class="kicker">Movimento na Fatax serve a três propósitos: confirmar uma ação, orientar atenção, ou suavizar uma mudança brusca. Tudo o que não cabe nesses três, sai.</p>
+      </div>
+      <div class="right"><div class="big">14</div>Motion</div>
+    </header>
+    <div class="content">
+      
+      
+      <section class="block"><div class="label"><span class="num">01</span>Tokens</div><div class="body">
+        <h2>Duration tokens.</h2>
+        <table class="spec-table">
+          <thead><tr><th>Token</th><th>Valor</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td class="token">--dur-fast</td><td class="mono">120ms</td><td>Hover, focus, click feedback</td></tr>
+            <tr><td class="token">--dur-base</td><td class="mono">200ms</td><td>Toggle, tab change, dropdown</td></tr>
+            <tr><td class="token">--dur-slow</td><td class="mono">320ms</td><td>Modal enter/exit, page transition</td></tr>
+            <tr><td class="token">--dur-deliberate</td><td class="mono">560ms</td><td>Hero reveal, brand animation</td></tr>
+          </tbody>
+        </table>
+      </div></section>
+
+      <section class="block"><div class="label"><span class="num">02</span>Easing</div><div class="body">
+        <h2>Easing curves.</h2>
+        <table class="spec-table">
+          <thead><tr><th>Token</th><th>Curve</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td class="token">--ease-out</td><td class="mono">cubic-bezier(0.16, 1, 0.3, 1)</td><td>Padrão · enter, reveal</td></tr>
+            <tr><td class="token">--ease-std</td><td class="mono">cubic-bezier(0.4, 0, 0.2, 1)</td><td>Bidirecional · transition</td></tr>
+            <tr><td class="token">--ease-in</td><td class="mono">cubic-bezier(0.7, 0, 0.84, 0)</td><td>Exit, dismiss</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:var(--s-md)"><strong>Nunca</strong> use <span class="mono">ease-in-out</span> default do CSS — fica robótico.</p>
+      </div></section>
+
+      <section class="block"><div class="label"><span class="num">03</span>Patterns</div><div class="body">
+        <h2>Padrões de movimento.</h2>
+        <div class="card-grid">
+          <div class="card"><h4>Confirm</h4><p style="font-size:13px; color:var(--text-secondary); line-height:1.5">Botão muda cor em 120ms. Toggle desliza em 200ms. Sem bounce, sem overshoot.</p></div>
+          <div class="card"><h4>Reveal</h4><p style="font-size:13px; color:var(--text-secondary); line-height:1.5">Modais entram com opacity 0→1 + translate 8px→0 em 320ms ease-out. Saem em 200ms ease-in.</p></div>
+          <div class="card"><h4>Orient</h4><p style="font-size:13px; color:var(--text-secondary); line-height:1.5">Indicador de tab desliza horizontalmente em 200ms. Sparklines animam draw da esquerda pra direita.</p></div>
+          <div class="card"><h4>Suavizar</h4><p style="font-size:13px; color:var(--text-secondary); line-height:1.5">Quando um valor muda em KPI, transição numérica em 560ms. Não pula direto.</p></div>
+        </div>
+      </div></section>
+
+      <section class="block"><div class="label"><span class="num">04</span>Reduce</div><div class="body">
+        <h2>Prefers-reduced-motion.</h2>
+        <p>Toda animação respeita a preferência do usuário. Quando <span class="mono">@media (prefers-reduced-motion: reduce)</span>, duration cai pra 0ms e mantemos só fade.</p>
+        <pre style="background:var(--surface-sunken); border:1px solid var(--border-soft); border-radius:var(--r-sm); padding:var(--s-lg); font-family:var(--font-mono); font-size:12px; color:var(--brand-cream); overflow-x:auto; line-height:1.6;">
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}</pre>
+      </div></section>
+  
+      <div data-pager></div>
+    </div>
+  </main>
+</div>
+<script src="shared/include.js"></script>
+</body>
+</html>

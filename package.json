@@ -1,0 +1,57 @@
+{
+  "name": "@fatax/design-system",
+  "version": "0.6.0",
+  "description": "Fatax Design System — brandbook, tokens, CSS, assets and React components for the Dark Cockpit identity.",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/static-server.mjs . 4173",
+    "start": "node tools/static-server.mjs . 4173",
+    "lint:css": "stylelint \"brandbook/**/*.css\" \"dist/**/*.css\" --allow-empty-input",
+    "lint:css:fix": "stylelint \"brandbook/**/*.css\" \"dist/**/*.css\" --fix --allow-empty-input",
+    "tokens:generate": "cd codegen && npm install --silent && npm run generate",
+    "tokens:check": "cd codegen && npm install --silent && npm run check",
+    "check": "npm run tokens:check && npm run lint:css"
+  },
+  "devDependencies": {
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0"
+  },
+  "main": "./dist/fatax.css",
+  "style": "./dist/fatax.css",
+  "exports": {
+    ".": "./dist/fatax.css",
+    "./tokens": "./dist/tokens.css",
+    "./base": "./dist/base.css",
+    "./components": "./dist/components.css",
+    "./sidebar.css": "./dist/sidebar.css",
+    "./sidebar.html": "./dist/sidebar.html",
+    "./sidebar.js": "./dist/sidebar.js",
+    "./logo/*": "./assets/logo/*",
+    "./spec": "./DESIGN.md",
+    "./ai-guide": "./AI_BRAND_GUIDE.md"
+  },
+  "files": [
+    "dist/",
+    "assets/",
+    "DESIGN.md",
+    "README.md",
+    "AI_BRAND_GUIDE.md",
+    "AGENTS.md"
+  ],
+  "keywords": [
+    "fatax",
+    "design-system",
+    "brandbook",
+    "tokens",
+    "dark-cockpit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fatax/design-system.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

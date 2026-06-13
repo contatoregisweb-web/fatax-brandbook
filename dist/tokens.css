@@ -1,0 +1,102 @@
+/* ════════════════════════════════════════════════════════════════
+   @fatax/design-system · tokens.css
+   GENERATED FROM DESIGN.md v0.6 — 2026-06-13
+   DO NOT EDIT MANUALLY. Run `cd codegen && npm run generate`.
+   ════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ── Base surfaces ───────────────────────────────── */
+  --background: #0A0A0A;
+  --surface: #141414;
+  --surface-raised: #1C1C1C;
+  --surface-sunken: #050506;
+  --surface-overlay: rgba(0,0,0,0.85);
+
+  /* ── Bordas ──────────────────────────────────────── */
+  --border: #262626;
+  --border-soft: #1A1A1A;
+  --border-strong: #363636;
+  --border-cream: rgba(245,235,222,0.12);
+
+  /* ── Texto ───────────────────────────────────────── */
+  --text-primary: #F5EBDE;
+  --text-secondary: #9C9489;
+  --text-muted: #6B655D;
+  --text-disabled: #3A3631;
+  --text-inverse: #0A0A0A;
+
+  /* ── Marca ───────────────────────────────────────── */
+  --brand-orange: #FF4800;
+  --brand-orange-hover: #FF6A2E;
+  --brand-orange-pressed: #D63D00;
+  --brand-orange-soft: #2E1408;
+  --brand-orange-tint: #3A1A0C;
+  --brand-cream: #F5EBDE;
+  --brand-cream-dark: #C9C0B4;
+  --brand-cream-soft: rgba(245,235,222,0.08);
+  --brand-black: #0A0A0A;
+  --on-orange: #FFFFFF;
+  --on-cream: #0A0A0A;
+
+  /* ── Semânticos ──────────────────────────────────── */
+  --success: #3FB76E;
+  --success-soft: #0F2A1C;
+  --warning: #F2B33B;
+  --warning-soft: #2E2110;
+  --danger: #E5484D;
+  --danger-soft: #2E1214;
+  --info: #5B8DEF;
+  --info-soft: #101A2E;
+
+  /* ── Spacing (base 4) ────────────────────────────── */
+  --s-2xs: 2px;
+  --s-xs: 4px;
+  --s-sm: 8px;
+  --s-md: 12px;
+  --s-lg: 16px;
+  --s-xl: 24px;
+  --s-2xl: 32px;
+  --s-3xl: 48px;
+  --s-4xl: 64px;
+  --s-5xl: 96px;
+  --s-6xl: 128px;
+
+  /* ── Radius ──────────────────────────────────────── */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-full: 9999px;
+
+  /* ── Type families ───────────────────────────────── */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: Syne, 'Inter', system-ui, sans-serif;
+  --font-serif: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* ── Layout ──────────────────────────────────────── */
+  --sidebar-w: 280px;
+  --sidebar-w-collapsed: 72px;
+  --content-max: 1080px;
+  --pad-x: 80px;
+
+  /* ── Type rhythm ─────────────────────────────────── */
+  --lh-title: 1.2;
+  --lh-body: 1.5;
+
+  /* ── Motion ──────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+  --dur-deliberate: 560ms;
+}
+
+@media (max-width: 1024px) {
+  :root { --pad-x: 32px; }
+}

@@ -1,0 +1,263 @@
+/* ═══════════════════════════════════════════════════════════════
+   @fatax/design-system · base.css
+   v0.6 · Dark Cockpit
+   ───────────────────────────────────────────────────────────────
+   Reset · global type rules · utility classes · document shell
+   (.main, .topbar, .section-header, .content, .block)
+   Funciona com ou sem sidebar.
+   Requer: tokens.css carregado antes.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL TYPE RULES
+   • Títulos:  line-height 1.2 + text-wrap: balance (sem viúvas)
+   • Corpo:    line-height 1.5 + text-wrap: pretty   (sem viúvas)
+   ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL TYPE RULES
+   • Títulos:  line-height 1.2 + text-wrap: balance (sem víúvas)
+   • Corpo:   line-height 1.5 + text-wrap: pretty   (sem víúvas)
+   • Body padrão usa Inter; títulos usam Syne.
+   ═══════════════════════════════════════════════════════════════ */
+h1, h2, h3, h4, h5, h6 {
+  line-height: var(--lh-title);
+  text-wrap: balance;
+}
+p, li, dd, blockquote, figcaption, .kicker, .lede {
+  text-wrap: pretty;
+}
+
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);     /* texto corrido = Inter */
+  font-size: 15px;
+  line-height: var(--lh-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01", "ss03";
+  text-wrap: pretty;
+}
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; cursor: pointer; border: 0; background: 0; color: inherit; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+hr { border: 0; border-top: 1px solid var(--border-soft); margin: 0; }
+
+::selection { background: var(--brand-orange); color: var(--on-orange); }
+
+
+/* ── Utility ───────────────────────────────────────── */
+.mono { font-family: var(--font-mono); }
+.cream { color: var(--brand-cream); }
+.orange { color: var(--brand-orange); }
+.muted { color: var(--text-muted); }
+.secondary { color: var(--text-secondary); }
+.no-wrap { white-space: nowrap; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   DOCUMENT SHELL — .main + .topbar
+   ═══════════════════════════════════════════════════════════════ */
+/* ── Main ───────────────────────────────────────────── */
+.main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ── Top bar (within main) ─────────────────────────── */
+.topbar {
+  height: 48px;
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--pad-x);
+  gap: var(--s-md);
+  background: var(--background);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  backdrop-filter: blur(8px);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0;
+}
+.topbar .crumbs { display: flex; align-items: center; gap: var(--s-sm); }
+.topbar .crumbs .sep { color: var(--text-disabled); }
+.topbar .crumbs .here { color: var(--text-primary); }
+.topbar .spacer { flex: 1; }
+.topbar .meta { display: flex; align-items: center; gap: var(--s-lg); font-family: var(--font-serif); font-style: italic; font-size: 14px; font-weight: 400; letter-spacing: 0; }
+.topbar .meta b { color: var(--brand-orange); font-weight: 400; font-style: italic; }
+.topbar .crumbs { font-family: var(--font-sans); font-weight: 500; font-size: 13px; letter-spacing: 0; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION HEADER + CONTENT BLOCKS
+   Layout editorial Fatax: eyebrow + h1 + kicker + giant número.
+   ═══════════════════════════════════════════════════════════════ */
+/* ── Section header (page hero) ─────────────────────── */
+.section-header {
+  padding: var(--s-4xl) var(--pad-x) var(--s-3xl);
+  border-bottom: 1px solid var(--border-soft);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s-2xl);
+  align-items: end;
+}
+.section-header .left { max-width: 800px; }
+.section-header .eyebrow {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-orange);
+  margin-bottom: var(--s-md);
+  display: flex;
+  align-items: center;
+  gap: var(--s-md);
+}
+.section-header .eyebrow .pip {
+  width: 8px; height: 8px;
+  background: var(--brand-orange);
+}
+.section-header h1 {
+  font-family: var(--font-display);           /* Syne — display */
+  font-size: 80px;
+  line-height: var(--lh-title);
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  color: var(--brand-cream);
+  margin-bottom: var(--s-lg);
+  text-wrap: balance;
+}
+.section-header h1 .dim { color: var(--text-muted); font-weight: 600; }
+.section-header h1 .accent { color: var(--brand-orange); font-weight: 800; }
+.section-header h1 em {
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-weight: 500;
+}
+.section-header p.kicker {
+  font-family: var(--font-sans);              /* Inter — texto corrido */
+  font-size: 17px;
+  line-height: var(--lh-body);
+  color: var(--text-secondary);
+  max-width: 62ch;
+  font-weight: 400;
+  text-wrap: pretty;
+}
+.section-header p.kicker strong { color: var(--brand-cream); font-weight: 600; }
+.section-header .right {
+  text-align: right;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-muted);
+  letter-spacing: 0;
+  line-height: 1.6;
+  text-transform: none;
+  font-weight: 400;
+}
+.section-header .right .big {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 140px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--border);
+  -webkit-text-stroke: 0;
+  margin-bottom: var(--s-sm);
+  letter-spacing: -0.04em;
+}
+
+
+/* ── Content blocks ────────────────────────────────── */
+.content {
+  padding: var(--s-4xl) var(--pad-x) var(--s-6xl);
+}
+.content > * + * { margin-top: var(--s-4xl); }
+
+.block {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--s-4xl);
+}
+.block > .label {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding-top: 6px;
+}
+.block > .label .num {
+  display: block;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--brand-orange);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--s-xs);
+  line-height: 1;
+}
+.block > .body { min-width: 0; }
+.block > .body > h2 {
+  font-family: var(--font-display);           /* Syne */
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: var(--lh-title);
+  margin-bottom: var(--s-md);
+  color: var(--brand-cream);
+  text-wrap: balance;
+}
+.block > .body > h2 em {
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--brand-orange);
+}
+.block > .body > h3 {
+  font-family: var(--font-display);           /* Syne */
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: var(--lh-title);
+  margin-bottom: var(--s-sm);
+  color: var(--brand-cream);
+  text-wrap: balance;
+}
+.block > .body > p {
+  font-family: var(--font-sans);              /* Inter — corpo */
+  font-size: 15px;
+  line-height: var(--lh-body);
+  color: var(--text-secondary);
+  margin-bottom: var(--s-md);
+  max-width: 66ch;
+  text-wrap: pretty;
+}
+.block > .body > p strong { color: var(--brand-cream); font-weight: 600; }
+.block > .body > p em { font-style: italic; color: var(--brand-cream); }
+.block > .body > p + h3 { margin-top: var(--s-xl); }
+.block > .body > * + * { margin-top: var(--s-md); }
+
+@media (max-width: 900px) {
+  .block { grid-template-columns: 1fr; gap: var(--s-md); }
+  .section-header { grid-template-columns: 1fr; }
+  .section-header .right { text-align: left; }
+  .section-header h1 { font-size: 48px; }
+}

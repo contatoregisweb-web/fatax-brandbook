@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>16 · Tokens — Fatax Brandbook</title><link rel="stylesheet" href="shared/style.css"/></head>
+<body><div class="app"><div data-include="sidebar"></div><main class="main">
+<div class="topbar"><span class="crumbs"><span>Brandbook</span><span class="sep">/</span><span>Design System</span><span class="sep">/</span><span class="here">Tokens</span></span><span class="spacer"></span></div>
+<header class="section-header"><div class="left"><div class="eyebrow"><span class="pip"></span>Design Tokens</div><h1><span class="accent">Tokens.</span> <span class="dim">A camada machine-readable.</span></h1><p class="kicker">Todo valor visual do sistema vive como token. Nada inline, nada hardcoded. O DESIGN.md é a fonte de verdade — o código consome.</p></div><div class="right"><div class="big">16</div>Design</div></header>
+<div class="content">
+<section class="block"><div class="label"><span class="num">01</span>Categories</div><div class="body">
+<h2>Categorias de token.</h2>
+<table class="spec-table">
+<thead><tr><th>Categoria</th><th>Prefixo</th><th>Total</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><strong>Colors</strong></td><td class="mono">--brand-* / --text-* / --surface-*</td><td class="mono">28</td><td class="token">--brand-orange</td></tr>
+<tr><td><strong>Typography</strong></td><td class="mono">--font-*</td><td class="mono">3</td><td class="token">--font-display · --font-sans</td></tr>
+<tr><td><strong>Spacing</strong></td><td class="mono">--s-*</td><td class="mono">11</td><td class="token">--s-lg</td></tr>
+<tr><td><strong>Radius</strong></td><td class="mono">--r-*</td><td class="mono">6</td><td class="token">--r-md</td></tr>
+<tr><td><strong>Motion</strong></td><td class="mono">--dur-* / --ease-*</td><td class="mono">7</td><td class="token">--ease-out</td></tr>
+<tr><td><strong>Layout</strong></td><td class="mono">--sidebar-w / --content-max</td><td class="mono">4</td><td class="token">--content-max</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">02</span>Naming</div><div class="body">
+<h2>Convenções de naming.</h2>
+<p>Tokens seguem três níveis: <strong>primitive → semantic → component</strong>. Componentes referenciam semanticos, semanticos referenciam primitives. Nunca pula camada.</p>
+<table class="spec-table">
+<thead><tr><th>Camada</th><th>Exemplo</th><th>O que é</th></tr></thead>
+<tbody>
+<tr><td><strong>Primitive</strong></td><td class="mono">--orange-500: #FF4800</td><td>Valor cru. Sem semântica.</td></tr>
+<tr><td><strong>Semantic</strong></td><td class="mono">--brand-orange: var(--orange-500)</td><td>Significado da marca.</td></tr>
+<tr><td><strong>Component</strong></td><td class="mono">--btn-primary-bg: var(--brand-orange)</td><td>Aplicação específica.</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">03</span>Spacing scale</div><div class="body">
+<h2>Spacing — base 4.</h2>
+<div style="display:flex; flex-direction:column; gap:6px; max-width:600px;">
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">2xs</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">2px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:2px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">xs</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">4px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:4px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">sm</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">8px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:8px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">md</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">12px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:12px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">lg</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">16px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:16px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">xl</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">24px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:24px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">2xl</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">32px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:32px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">3xl</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">48px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:48px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">4xl</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">64px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:64px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">5xl</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">96px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:96px;"></span>
+</div>
+
+<div style="display:grid; grid-template-columns: 60px 70px 1fr; gap:var(--s-md); align-items:center; padding:6px 0; border-top:1px dashed var(--border-soft); font-size:12px;">
+<span class="mono" style="color:var(--text-secondary)">6xl</span>
+<span class="mono" style="color:var(--text-muted); font-size:11px">128px</span>
+<span style="height:18px; background:var(--brand-orange-soft); border-left:2px solid var(--brand-orange); width:128px;"></span>
+</div>
+
+</div>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">04</span>Export</div><div class="body">
+<h2>Exportar tokens.</h2>
+<p>O <span class="mono">DESIGN.md</span> exporta automaticamente para 4 formatos via <span class="mono">npx @google/design.md export</span>.</p>
+<table class="spec-table">
+<thead><tr><th>Formato</th><th>Comando</th><th>Saída</th></tr></thead>
+<tbody>
+<tr><td>Tailwind v3 JSON</td><td class="mono">--format json-tailwind</td><td>theme.extend</td></tr>
+<tr><td>Tailwind v4 CSS</td><td class="mono">--format css-tailwind</td><td>@theme {}</td></tr>
+<tr><td>W3C DTCG</td><td class="mono">--format dtcg</td><td>tokens.json</td></tr>
+<tr><td>CSS custom props</td><td class="mono">manual</td><td>shared/style.css</td></tr>
+</tbody>
+</table>
+</div></section>
+<div data-pager></div></div>
+</main></div><script src="shared/include.js"></script></body></html>

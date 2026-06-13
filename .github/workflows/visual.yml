@@ -1,0 +1,87 @@
+name: Visual regression · Playwright
+
+on:
+  pull_request:
+    paths:
+      - 'brandbook/**'
+      - 'dist/**'
+      - 'examples/**'
+      - 'assets/**'
+      - 'react/**'
+      - 'visual/**'
+  push:
+    branches: [main]
+
+jobs:
+  visual:
+    name: chromium @ ubuntu
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: visual/package-lock.json
+
+      - name: Install visual deps
+        working-directory: ./visual
+        run: npm ci --no-audit --no-fund
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('visual/package-lock.json') }}
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        working-directory: ./visual
+        run: npx playwright install --with-deps chromium
+
+      - name: Run visual regression
+        working-directory: ./visual
+        run: npm test
+
+      - name: Upload Playwright report (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: visual/playwright-report/
+          retention-days: 14
+
+      - name: Upload diff snapshots (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diffs
+          path: visual/test-results/
+          retention-days: 14
+
+      - name: Comment PR with failure hint
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🔴 Visual regression falhou\n\n` +
+                    `Algum snapshot mudou. Baixe o artifact \`playwright-report\` ` +
+                    `pra ver os diffs lado a lado.\n\n` +
+                    `Se a mudança foi **intencional**, rode localmente:\n` +
+                    `\`\`\`bash\n` +
+                    `cd visual\n` +
+                    `docker run --rm --network host -v "$(pwd):/work" -w /work \\\n` +
+                    `  mcr.microsoft.com/playwright:v1.40.0-jammy \\\n` +
+                    `  bash -c "npm install && npm run test:update"\n` +
+                    `git add snapshots/ && git commit -m "visual: update baselines"\n` +
+                    `\`\`\`\n\n` +
+                    `Se foi **acidental**, ajuste o CSS até o test passar.`
+            });

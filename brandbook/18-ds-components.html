@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>18 · Components — Fatax Brandbook</title>
+<link rel="stylesheet" href="shared/style.css" />
+<style>
+  .cmp-row {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
+  .cmp-row > header {
+    padding: var(--s-md) var(--s-lg);
+    background: var(--surface-sunken);
+    border-bottom: 1px solid var(--border-soft);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+  .cmp-row > header h4 { color: var(--brand-cream); font-family: var(--font-sans); font-size: 14px; text-transform: none; letter-spacing: -0.005em; }
+  .cmp-row > .stage { padding: var(--s-xl); display: flex; flex-wrap: wrap; gap: var(--s-md); align-items: center; min-height: 80px; }
+  .cmp-row > .stage.col { flex-direction: column; align-items: stretch; }
+
+  /* INPUT (local) */
+  .ip-group { display: flex; flex-direction: column; gap: 6px; max-width: 320px; width: 100%; }
+  .ip-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+  .ip { height: 40px; background: var(--surface-sunken); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 0 14px; font-family: inherit; font-size: 14px; font-weight: 500; color: var(--brand-cream); outline: 0; transition: background var(--dur-fast), border-color var(--dur-fast); width: 100%; }
+  .ip::placeholder { color: var(--text-muted); font-weight: 400; }
+  .ip:focus { background: var(--surface); border-color: var(--brand-orange); }
+  .ip-help { font-size: 12px; color: var(--text-muted); }
+
+  /* KPI Card */
+  .kpi { background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--r-md); padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 240px; }
+  .kpi .lbl { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+  .kpi .val { font-family: var(--font-mono); font-size: 32px; font-weight: 700; letter-spacing: -0.018em; color: var(--brand-cream); }
+  .kpi .delta { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 13px; color: var(--success); font-weight: 600; }
+  .kpi .sub { font-size: 12px; color: var(--text-muted); }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--border); padding-bottom: 0; }
+  .tab { padding: 10px 14px; font-size: 14px; font-weight: 600; color: var(--text-secondary); cursor: pointer; border-bottom: 2px solid transparent; transition: color var(--dur-fast), border-color var(--dur-fast); }
+  .tab:hover { color: var(--brand-cream); }
+  .tab.active { color: var(--brand-cream); border-color: var(--brand-orange); }
+
+  /* Toggle */
+  .toggle { width: 36px; height: 20px; background: var(--surface-raised); border-radius: var(--r-full); position: relative; cursor: pointer; transition: background var(--dur-fast); }
+  .toggle::after { content: ""; width: 16px; height: 16px; background: var(--brand-cream); border-radius: var(--r-full); position: absolute; top: 2px; left: 2px; transition: left var(--dur-base) var(--ease-out); }
+  .toggle.on { background: var(--brand-orange); }
+  .toggle.on::after { left: 18px; background: #fff; }
+
+  /* Checkbox */
+  .check { width: 18px; height: 18px; border: 1.5px solid var(--border-strong); border-radius: var(--r-xs); display: grid; place-items: center; cursor: pointer; }
+  .check.on { background: var(--brand-orange); border-color: var(--brand-orange); }
+  .check.on::after { content: "✓"; color: #fff; font-size: 13px; font-weight: 700; line-height: 1; }
+
+  /* Progress */
+  .progress { height: 6px; background: var(--surface-raised); border-radius: var(--r-full); overflow: hidden; }
+  .progress > div { height: 100%; background: var(--brand-orange); border-radius: var(--r-full); }
+
+  /* Tooltip */
+  .ttip-wrap { position: relative; display: inline-flex; }
+  .ttip {
+    position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    background: var(--brand-cream); color: var(--brand-black);
+    padding: 6px 10px; border-radius: var(--r-xs);
+    font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .ttip::after {
+    content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border: 4px solid transparent; border-top-color: var(--brand-cream);
+  }
+
+  /* Avatar */
+  .av { width: 32px; height: 32px; border-radius: var(--r-full); background: var(--brand-orange-soft); color: var(--brand-orange); display: grid; place-items: center; font-size: 12px; font-weight: 800; }
+  .av.lg { width: 48px; height: 48px; font-size: 16px; }
+  .av.sm { width: 24px; height: 24px; font-size: 10px; }
+  .av-stack { display: flex; }
+  .av-stack > * + * { margin-left: -8px; border: 2px solid var(--surface); }
+
+  /* Alert */
+  .alert {
+    padding: 14px 18px; border-radius: var(--r-sm);
+    display: flex; gap: var(--s-md); align-items: flex-start;
+    font-size: 14px; width: 100%; font-weight: 500;
+  }
+  .alert .text strong { display: block; font-weight: 700; margin-bottom: 2px; }
+  .alert .text p { font-size: 13px; opacity: 0.85; }
+  .alert.info    { background: var(--info-soft);    color: var(--info); }
+  .alert.success { background: var(--success-soft); color: var(--success); }
+  .alert.warning { background: var(--warning-soft); color: var(--warning); }
+  .alert.danger  { background: var(--danger-soft);  color: var(--danger); }
+
+  /* Modal preview */
+  .modal-stage { background: rgba(0,0,0,0.85); padding: var(--s-2xl); border-radius: var(--r-md); display: grid; place-items: center; min-height: 280px; width: 100%; }
+  .modal-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px; max-width: 400px; width: 100%; display: flex; flex-direction: column; gap: 12px; }
+  .modal-box h4 { font-size: 20px; font-weight: 700; letter-spacing: -0.012em; color: var(--brand-cream); }
+  .modal-box p { font-size: 14px; color: var(--text-secondary); }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+
+  /* Skeleton */
+  .skel { background: linear-gradient(90deg, var(--surface-raised) 0%, var(--border) 50%, var(--surface-raised) 100%); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; border-radius: var(--r-xs); }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <div data-include="sidebar"></div>
+  <main class="main">
+
+    <div class="topbar">
+      <span class="crumbs"><span>Brandbook</span><span class="sep">/</span><span>Design System</span><span class="sep">/</span><span class="here">Components</span></span>
+      <span class="spacer"></span>
+    </div>
+
+    <header class="section-header">
+      <div class="left">
+        <div class="eyebrow"><span class="pip"></span>Component Library</div>
+        <h1><span class="accent">Components.</span> <span class="dim">Os blocos do produto.</span></h1>
+        <p class="kicker">
+          30+ componentes fundadores. Altura padrão 40px, radius 8–12px, padding lateral 14–18px.
+          Coerência sobre criatividade — todo desvio precisa de justificativa explícita.
+        </p>
+      </div>
+      <div class="right"><div class="big">18</div>Components</div>
+    </header>
+
+    <div class="content">
+
+      <!-- BUTTONS -->
+      <section class="block">
+        <div class="label"><span class="num">01</span>Buttons</div>
+        <div class="body">
+          <h2>Buttons.</h2>
+          <p>Quatro hierarquias. <strong>Sempre nowrap</strong>, sempre branco sobre laranja. Texto não quebra em duas linhas.</p>
+
+          <div class="cmp-row">
+            <header><h4>Hierarquia</h4><span>height: 40px · radius: 8px · nowrap</span></header>
+            <div class="stage">
+              <button class="btn btn-primary">Aprovar fechamento</button>
+              <button class="btn btn-secondary">Cancelar</button>
+              <button class="btn btn-ghost">Ver detalhes</button>
+              <button class="btn btn-outline">Editar</button>
+              <button class="btn btn-danger">Excluir</button>
+              <button class="btn btn-primary" disabled>Aguardando</button>
+            </div>
+          </div>
+
+          <div class="cmp-row" style="margin-top:var(--s-md)">
+            <header><h4>Tamanhos</h4><span>sm 32px · default 40px · lg 48px</span></header>
+            <div class="stage">
+              <button class="btn btn-primary btn-sm">Pequeno</button>
+              <button class="btn btn-primary">Padrão</button>
+              <button class="btn btn-primary btn-lg">Grande</button>
+              <button class="btn btn-secondary btn-sm">Sm</button>
+              <button class="btn btn-secondary">Md</button>
+              <button class="btn btn-secondary btn-lg">Lg</button>
+            </div>
+          </div>
+
+          <div class="cmp-row" style="margin-top:var(--s-md)">
+            <header><h4>Com ícone</h4><span>gap 8px · ícone 14×14 stroke 2.4</span></header>
+            <div class="stage">
+              <button class="btn btn-primary"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span>Adicionar cliente</button>
+              <button class="btn btn-primary">Próximo<span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></button>
+              <button class="btn btn-secondary"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></span>Exportar CSV</button>
+              <button class="btn btn-ghost"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0zM12 8v4l3 2"/></svg></span>Agendar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INPUTS -->
+      <section class="block">
+        <div class="label"><span class="num">02</span>Inputs</div>
+        <div class="body">
+          <h2>Form fields.</h2>
+          <p>Fundo <span class="mono">surface-sunken</span> em repouso. No focus: fundo sobe pra surface, border vira <span class="mono">primary</span>.</p>
+
+          <div class="cmp-row">
+            <header><h4>Text input</h4><span>height: 40px · radius: 8px</span></header>
+            <div class="stage col">
+              <div class="ip-group">
+                <label class="ip-label">CNPJ</label>
+                <input class="ip" placeholder="00.000.000/0000-00"/>
+                <span class="ip-help">Apenas dígitos. Validação automática.</span>
+              </div>
+              <div class="ip-group">
+                <label class="ip-label">E-mail comercial</label>
+                <input class="ip" value="contato@fatax.com.br"/>
+              </div>
+              <div class="ip-group">
+                <label class="ip-label">Meta mensal</label>
+                <input class="ip" value="R$ -" style="border-color:var(--danger)"/>
+                <span class="ip-help" style="color:var(--danger)">Valor obrigatório.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cmp-row" style="margin-top:var(--s-md)">
+            <header><h4>Select &amp; controls</h4><span>toggles · checkbox · radio</span></header>
+            <div class="stage">
+              <div style="display:flex; align-items:center; gap:var(--s-md);">
+                <div class="toggle on"></div><span style="font-size:13px; color:var(--brand-cream)">Notificações por e-mail</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:var(--s-md);">
+                <div class="toggle"></div><span style="font-size:13px; color:var(--text-secondary)">Resumo semanal</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:var(--s-md);">
+                <div class="check on"></div><span style="font-size:13px; color:var(--brand-cream)">Aceito os termos</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:var(--s-md);">
+                <div class="check"></div><span style="font-size:13px; color:var(--text-secondary)">Lembrar de mim</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NAV + TABS -->
+      <section class="block">
+        <div class="label"><span class="num">03</span>Navigation</div>
+        <div class="body">
+          <h2>Tabs &amp; breadcrumbs.</h2>
+          <div class="cmp-row">
+            <header><h4>Tabs</h4><span>underline orange · 200ms</span></header>
+            <div class="stage col">
+              <div class="tabs">
+                <span class="tab active">Visão geral</span>
+                <span class="tab">Pipeline</span>
+                <span class="tab">Clientes</span>
+                <span class="tab">Financeiro</span>
+                <span class="tab">Marketing</span>
+              </div>
+            </div>
+          </div>
+          <div class="cmp-row" style="margin-top:var(--s-md)">
+            <header><h4>Breadcrumbs</h4><span>font-mono · separador "/"</span></header>
+            <div class="stage">
+              <div style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted); letter-spacing:0.04em;">
+                Dashboard
+                <span style="color:var(--text-disabled); margin:0 8px;">/</span>
+                Clientes
+                <span style="color:var(--text-disabled); margin:0 8px;">/</span>
+                <span style="color:var(--brand-cream);">Almeida &amp; Cia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BADGES + PILLS -->
+      <section class="block">
+        <div class="label"><span class="num">04</span>Status</div>
+        <div class="body">
+          <h2>Badges &amp; pills.</h2>
+          <div class="cmp-row">
+            <header><h4>Pills semânticos</h4><span>height: 22px · radius: 4px</span></header>
+            <div class="stage">
+              <span class="pill">Rascunho</span>
+              <span class="pill orange">Prioridade</span>
+              <span class="pill cream">Premium</span>
+              <span class="pill success">Pago</span>
+              <span class="pill warning">Vencendo</span>
+              <span class="pill danger">Vencido</span>
+              <span class="pill info">Sistema</span>
+            </div>
+          </div>
+          <div class="cmp-row" style="margin-top:var(--s-md)">
+            <header><h4>Avatars</h4><span>radius: full · cream-soft fallback</span></header>
+            <div class="stage">
+              <div class="av-stack">
+                <div class="av lg">FG</div>
+                <div class="av lg">DR</div>
+                <div class="av lg">BM</div>
+                <div class="av lg" style="background:var(--surface-raised); color:var(--text-muted); font-weight:700;">+8</div>
+              </div>
+              <div class="av lg" style="background:var(--brand-cream); color:var(--brand-black);">JP</div>
+              <div class="av">FG</div>
+              <div class="av sm">FG</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KPI + CARD -->
+      <section class="block">
+        <div class="label"><span class="num">05</span>Cards</div>
+        <div class="body">
+          <h2>Cards.</h2>
+          <div class="cmp-row">
+            <header><h4>KPI</h4><span>surface · radius: 12px · padding: 20px</span></header>
+            <div class="stage">
+              <div class="kpi">
+                <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                  <span class="lbl">MRR · Recorrente</span>
+                  <span class="pill success">UP</span>
+                </div>
+                <div>
+                  <div class="val">R$ 248.713</div>
+                  <span class="delta">▲ 12.4% MoM</span>
+                </div>
+                <span class="sub">Atualizado há 4 min · CRM</span>
+              </div>
+
+              <div class="kpi">
+                <span class="lbl">Pipeline aberto</span>
+                <div class="val">R$ 1.2M</div>
+                <div class="progress" style="margin-top:4px"><div style="width:64%"></div></div>
+                <span class="sub">64% da meta trimestral</span>
+              </div>
+
+              <div class="kpi">
+                <span class="lbl">Churn 30d</span>
+                <div class="val" style="color:var(--danger)">2.4%</div>
+                <span class="delta" style="color:var(--danger)">▼ −0.8 vs anterior</span>
+                <span class="sub">3 contratos cancelados</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ALERTS -->
+      <section class="block">
+        <div class="label"><span class="num">06</span>Feedback</div>
+        <div class="body">
+          <h2>Alerts &amp; toasts.</h2>
+          <div class="cmp-row">
+            <header><h4>4 variantes semânticas</h4><span>*-soft fundo · cor sólida texto</span></header>
+            <div class="stage col">
+              <div class="alert info">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                <div class="text"><strong>Integração CRM atualizada</strong><p>Sincroniza a cada 15 min. Próxima rodada às 14:30.</p></div>
+              </div>
+              <div class="alert success">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+                <div class="text"><strong>Relatório exportado</strong><p>relatorio-pipeline-mai-2026.csv enviado.</p></div>
+              </div>
+              <div class="alert warning">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3Z"/><path d="M12 9v4M12 17h.01"/></svg>
+                <div class="text"><strong>3 contratos vencendo</strong><p>Renovações pendentes — abra o financeiro.</p></div>
+              </div>
+              <div class="alert danger">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+                <div class="text"><strong>Falha na conexão ERP</strong><p>Reconectando em 12s — dados podem estar desatualizados.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cmp-row" style="margin-top:var(--s-md)">
+            <header><h4>Tooltip</h4><span>cream + black · mono · 11px</span></header>
+            <div class="stage">
+              <div class="ttip-wrap">
+                <button class="btn btn-secondary">Hover me</button>
+                <span class="ttip">⌘K · Buscar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODAL -->
+      <section class="block">
+        <div class="label"><span class="num">07</span>Overlay</div>
+        <div class="body">
+          <h2>Modal &amp; dialog.</h2>
+          <div class="cmp-row">
+            <header><h4>Confirmação destrutiva</h4><span>overlay 0.85 · radius: 16px · padding: 28px</span></header>
+            <div class="stage">
+              <div class="modal-stage">
+                <div class="modal-box">
+                  <span class="pill danger" style="align-self:flex-start">Ação destrutiva</span>
+                  <h4>Excluir cliente Almeida &amp; Cia?</h4>
+                  <p>Essa ação remove permanentemente o histórico de interações, contratos e métricas. Não pode ser desfeita.</p>
+                  <div class="modal-actions">
+                    <button class="btn btn-secondary">Manter</button>
+                    <button class="btn btn-danger">Excluir</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOADING -->
+      <section class="block">
+        <div class="label"><span class="num">08</span>Loading</div>
+        <div class="body">
+          <h2>Loading states.</h2>
+          <div class="cmp-row">
+            <header><h4>Skeleton · progress</h4><span>shimmer 1.4s linear</span></header>
+            <div class="stage col">
+              <div style="display:flex; flex-direction:column; gap:8px; max-width: 420px; width: 100%;">
+                <div class="skel" style="height:14px; width: 60%;"></div>
+                <div class="skel" style="height:14px; width: 90%;"></div>
+                <div class="skel" style="height:14px; width: 75%;"></div>
+              </div>
+              <div style="width:100%; max-width: 420px;">
+                <div class="progress"><div style="width:42%; transition: width 320ms;"></div></div>
+              </div>
+              <div style="display:flex; align-items:center; gap:var(--s-sm); color:var(--text-secondary); font-size:13px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="animation: spin 1s linear infinite"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>
+                Sincronizando dados…
+              </div>
+              <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SPEC TABLE -->
+      <section class="block">
+        <div class="label"><span class="num">09</span>Specs</div>
+        <div class="body">
+          <h2>Especificações.</h2>
+          <table class="spec-table">
+            <thead><tr><th>Componente</th><th>Altura</th><th>Padding</th><th>Radius</th><th>Type</th><th style="text-align:right">Token</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Button primary</strong></td><td class="mono">40px</td><td class="mono">0 18px</td><td class="mono">8px</td><td class="mono">14/700</td><td class="token" style="text-align:right">button-primary</td></tr>
+              <tr><td><strong>Button secondary</strong></td><td class="mono">40px</td><td class="mono">0 18px</td><td class="mono">8px</td><td class="mono">14/700</td><td class="token" style="text-align:right">button-secondary</td></tr>
+              <tr><td><strong>Button ghost</strong></td><td class="mono">36px</td><td class="mono">0 12px</td><td class="mono">8px</td><td class="mono">14/600</td><td class="token" style="text-align:right">button-ghost</td></tr>
+              <tr><td><strong>Input text</strong></td><td class="mono">40px</td><td class="mono">0 14px</td><td class="mono">8px</td><td class="mono">14/500</td><td class="token" style="text-align:right">input-text</td></tr>
+              <tr><td><strong>Card</strong></td><td class="mono">auto</td><td class="mono">20px</td><td class="mono">12px</td><td class="mono">—</td><td class="token" style="text-align:right">card</td></tr>
+              <tr><td><strong>Modal</strong></td><td class="mono">auto</td><td class="mono">28px</td><td class="mono">16px</td><td class="mono">—</td><td class="token" style="text-align:right">modal</td></tr>
+              <tr><td><strong>Badge / Pill</strong></td><td class="mono">22px</td><td class="mono">0 8px</td><td class="mono">4px</td><td class="mono">10/700 caps</td><td class="token" style="text-align:right">badge</td></tr>
+              <tr><td><strong>Avatar</strong></td><td class="mono">32px</td><td class="mono">—</td><td class="mono">full</td><td class="mono">12/800</td><td class="token" style="text-align:right">avatar</td></tr>
+              <tr><td><strong>Toggle</strong></td><td class="mono">20px</td><td class="mono">—</td><td class="mono">full</td><td class="mono">—</td><td class="token" style="text-align:right">toggle</td></tr>
+              <tr><td><strong>Tab</strong></td><td class="mono">~40px</td><td class="mono">10 14px</td><td class="mono">—</td><td class="mono">14/600</td><td class="token" style="text-align:right">tab</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div data-pager></div>
+    </div>
+  </main>
+</div>
+<script src="shared/include.js"></script>
+</body>
+</html>

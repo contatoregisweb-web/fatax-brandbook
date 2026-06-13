@@ -1,0 +1,311 @@
+<!-- ─────────────────────────────────────────────────────────────
+     FATAX BRANDBOOK — SIDEBAR
+     Includes inline SVG sprite (custom Feather-style icons)
+     ───────────────────────────────────────────────────────────── -->
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- shared attrs are set on <use> via CSS (stroke-width, etc). We define paths only. -->
+    <!-- All viewBox 24x24, single-stroke, Feather-inspired. -->
+
+    <!-- 01 · Overview · 2×2 grid -->
+    <symbol id="i-overview" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="7.5" height="7.5" rx="1"/>
+      <rect x="13.5" y="3" width="7.5" height="7.5" rx="1"/>
+      <rect x="3" y="13.5" width="7.5" height="7.5" rx="1"/>
+      <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1"/>
+    </symbol>
+
+    <!-- 02 · Mission & Values · flag -->
+    <symbol id="i-mission" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 22V4"/>
+      <path d="M4 4h12l-2 4 2 4H4"/>
+    </symbol>
+
+    <!-- 03 · Strategy · target / crosshair -->
+    <symbol id="i-strategy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <circle cx="12" cy="12" r="5"/>
+      <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+    </symbol>
+
+    <!-- 04 · Archetypes · two profile silhouettes -->
+    <symbol id="i-archetypes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="8" r="3.5"/>
+      <path d="M2 20a7 7 0 0 1 14 0"/>
+      <path d="M16 4.5a3.5 3.5 0 0 1 0 7"/>
+      <path d="M16 13a7 7 0 0 1 6 7"/>
+    </symbol>
+
+    <!-- 05 · Manifesto · quote / open book -->
+    <symbol id="i-manifesto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5z"/>
+      <path d="M4 19.5V21h16"/>
+    </symbol>
+
+    <!-- 06 · Voice & Tone · sound waves -->
+    <symbol id="i-voice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 5L6 9H3v6h3l5 4z"/>
+      <path d="M15.5 9a4 4 0 0 1 0 6"/>
+      <path d="M18.5 6a8 8 0 0 1 0 12"/>
+    </symbol>
+
+    <!-- 07 · Moodboard · image stack -->
+    <symbol id="i-moodboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="7" width="14" height="14" rx="1.5"/>
+      <path d="M7 3h14v14"/>
+      <circle cx="8.5" cy="12" r="1.2"/>
+      <path d="M17 17l-4-4-4 4"/>
+    </symbol>
+
+    <!-- 08 · Logo · asterisk -->
+    <symbol id="i-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3v18"/>
+      <path d="M3 12h18"/>
+      <path d="M5.5 5.5l13 13"/>
+      <path d="M18.5 5.5l-13 13"/>
+    </symbol>
+
+    <!-- 09 · Color · droplet -->
+    <symbol id="i-color" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l6 8.5a6 6 0 1 1-12 0z"/>
+    </symbol>
+
+    <!-- 10 · Typography · Aa serif marker -->
+    <symbol id="i-typography" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20l6-16 6 16"/>
+      <path d="M6.5 14h7"/>
+      <path d="M17 20v-9"/>
+      <circle cx="20" cy="11" r="1.2"/>
+    </symbol>
+
+    <!-- 11 · Iconography · dot grid -->
+    <symbol id="i-iconography" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+      <circle cx="5" cy="5" r="1.4"/>
+      <circle cx="12" cy="5" r="1.4"/>
+      <circle cx="19" cy="5" r="1.4"/>
+      <circle cx="5" cy="12" r="1.4"/>
+      <circle cx="12" cy="12" r="1.4"/>
+      <circle cx="19" cy="12" r="1.4"/>
+      <circle cx="5" cy="19" r="1.4"/>
+      <circle cx="12" cy="19" r="1.4"/>
+      <circle cx="19" cy="19" r="1.4"/>
+    </symbol>
+
+    <!-- 12 · Imagery · landscape -->
+    <symbol id="i-imagery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="16" rx="1.5"/>
+      <circle cx="8.5" cy="10" r="1.5"/>
+      <path d="M21 16l-5.5-5.5L7 19"/>
+    </symbol>
+
+    <!-- 13 · Illustrations · pen nib -->
+    <symbol id="i-illustrations" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+      <path d="M2 2l7.586 7.586"/>
+      <circle cx="11" cy="11" r="1.3"/>
+    </symbol>
+
+    <!-- 14 · Motion · activity wave -->
+    <symbol id="i-motion" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 12h3l3 8 6-16 3 8h3"/>
+    </symbol>
+
+    <!-- 15 · Audio · headphones -->
+    <symbol id="i-audio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 18v-6a9 9 0 1 1 18 0v6"/>
+      <path d="M21 19a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2z"/>
+      <path d="M3 19a2 2 0 0 0 2 2h1v-7H5a2 2 0 0 0-2 2z"/>
+    </symbol>
+
+    <!-- 16 · Tokens · code braces -->
+    <symbol id="i-tokens" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1"/>
+      <path d="M16 21h1a2 2 0 0 0 2-2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/>
+    </symbol>
+
+    <!-- 17 · Layout · columns -->
+    <symbol id="i-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="1.5"/>
+      <path d="M9 3v18"/>
+      <path d="M15 3v18"/>
+    </symbol>
+
+    <!-- 18 · Components · 3D box -->
+    <symbol id="i-components" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+      <path d="M3.3 7L12 12l8.7-5"/>
+      <path d="M12 22V12"/>
+    </symbol>
+
+    <!-- 19 · Inputs · text field -->
+    <symbol id="i-inputs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="7" width="18" height="10" rx="1.5"/>
+      <path d="M8 11v2"/>
+      <path d="M8 12h1.5"/>
+    </symbol>
+
+    <!-- 20 · Data Display · bar chart -->
+    <symbol id="i-data" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 3v18h18"/>
+      <rect x="7" y="11" width="3" height="7"/>
+      <rect x="12.5" y="7" width="3" height="11"/>
+      <rect x="18" y="14" width="3" height="4"/>
+    </symbol>
+
+    <!-- 21 · Editorial · open book -->
+    <symbol id="i-editorial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 4h7a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H3z"/>
+      <path d="M21 4h-7a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h8z"/>
+    </symbol>
+
+    <!-- 22 · Mockups · monitor -->
+    <symbol id="i-mockups" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="20" height="13" rx="1.5"/>
+      <path d="M8 21h8"/>
+      <path d="M12 17v4"/>
+    </symbol>
+
+    <!-- 23 · Social · share / network -->
+    <symbol id="i-social" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="18" cy="5" r="2.5"/>
+      <circle cx="6" cy="12" r="2.5"/>
+      <circle cx="18" cy="19" r="2.5"/>
+      <path d="M8.2 10.8l7.6-4.6"/>
+      <path d="M8.2 13.2l7.6 4.6"/>
+    </symbol>
+
+    <!-- 24 · Accessibility · person -->
+    <symbol id="i-accessibility" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <circle cx="12" cy="7.5" r="1.2" fill="currentColor"/>
+      <path d="M8 11h8"/>
+      <path d="M12 11v3"/>
+      <path d="M9 18l3-4 3 4"/>
+    </symbol>
+
+    <!-- External link (utility) -->
+    <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 3h7v7"/>
+      <path d="M10 14L21 3"/>
+      <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/>
+    </symbol>
+
+    <!-- Search (sidebar) -->
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m21 21-4.3-4.3"/>
+    </symbol>
+
+    <!-- Collapse chevron -->
+    <symbol id="i-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 6l-6 6 6 6"/>
+      <path d="M19 6v12"/>
+    </symbol>
+  </defs>
+</svg>
+
+<aside class="sidebar" data-sidebar-root>
+  <div class="sidebar-scroll">
+
+    <header class="sidebar-head">
+      <a class="sidebar-brand" href="index.html" aria-label="Fatax — voltar à capa">
+        <!--
+          Inline wordmark — split into two groups so the collapse animation can
+          slide the X to the left edge while the FATA letters slide off the
+          container, chasing the X. Color: dark-bg variant (cream + orange).
+        -->
+        <svg class="brand-svg" viewBox="0 0 626 84" preserveAspectRatio="xMinYMin meet" aria-hidden="true" focusable="false">
+          <g class="b-fata">
+            <path d="M129.024 -2.28882e-05V24.32H32V35.2H111.36V56.96H32V81.92H0V-2.28882e-05H129.024Z" fill="#F5EBDE"/>
+            <path d="M178.639 83.712C169.423 83.712 161.231 82.432 154.063 79.872C146.895 77.2267 141.22 73.4293 137.039 68.48C132.943 63.5306 130.895 57.5573 130.895 50.56C130.895 43.2213 132.943 37.0773 137.039 32.128C141.22 27.1786 146.895 23.4666 154.063 20.992C161.231 18.5173 169.423 17.28 178.639 17.28C188.879 17.28 197.711 18.688 205.135 21.504C212.644 24.2346 218.404 28.1173 222.415 33.152C226.511 38.1013 228.559 43.904 228.559 50.56C228.559 55.5093 227.407 60.032 225.103 64.128C222.799 68.1387 219.471 71.6373 215.119 74.624C210.767 77.5253 205.519 79.7866 199.375 81.408C193.231 82.944 186.319 83.712 178.639 83.712ZM190.159 64.256C196.644 64.256 202.575 63.872 207.951 63.104C213.412 62.2506 217.764 60.8426 221.007 58.88C224.335 56.9173 225.999 54.144 225.999 50.56C225.999 46.8906 224.335 44.0746 221.007 42.112C217.764 40.1493 213.412 38.784 207.951 38.016C202.575 37.248 196.644 36.864 190.159 36.864C181.455 36.864 174.714 38.016 169.935 40.32C165.156 42.5386 162.767 45.952 162.767 50.56C162.767 53.5466 163.834 56.064 165.967 58.112C168.1 60.16 171.215 61.696 175.311 62.72C179.407 63.744 184.356 64.256 190.159 64.256ZM225.999 19.2H256.719V81.92H227.791C227.791 81.92 227.62 80.9386 227.279 78.976C227.023 77.0133 226.724 74.1973 226.383 70.528C226.127 66.8587 225.999 62.5493 225.999 57.6V19.2Z" fill="#F5EBDE"/>
+            <path d="M265.1 19.2H340.364V38.4H265.1V19.2ZM287.372 -2.28882e-05H318.092V81.92H287.372V-2.28882e-05Z" fill="#F5EBDE"/>
+            <path d="M395.139 83.712C385.923 83.712 377.731 82.432 370.563 79.872C363.395 77.2267 357.72 73.4293 353.539 68.48C349.443 63.5306 347.395 57.5573 347.395 50.56C347.395 43.2213 349.443 37.0773 353.539 32.128C357.72 27.1786 363.395 23.4666 370.563 20.992C377.731 18.5173 385.923 17.28 395.139 17.28C405.379 17.28 414.211 18.688 421.635 21.504C429.144 24.2346 434.904 28.1173 438.915 33.152C443.011 38.1013 445.059 43.904 445.059 50.56C445.059 55.5093 443.907 60.032 441.603 64.128C439.299 68.1387 435.971 71.6373 431.619 74.624C427.267 77.5253 422.019 79.7866 415.875 81.408C409.731 82.944 402.819 83.712 395.139 83.712ZM406.659 64.256C413.144 64.256 419.075 63.872 424.451 63.104C429.912 62.2506 434.264 60.8426 437.507 58.88C440.835 56.9173 442.499 54.144 442.499 50.56C442.499 46.8906 440.835 44.0746 437.507 42.112C434.264 40.1493 429.912 38.784 424.451 38.016C419.075 37.248 413.144 36.864 406.659 36.864C397.955 36.864 391.214 38.016 386.435 40.32C381.656 42.5386 379.267 45.952 379.267 50.56C379.267 53.5466 380.334 56.064 382.467 58.112C384.6 60.16 387.715 61.696 391.811 62.72C395.907 63.744 400.856 64.256 406.659 64.256ZM442.499 19.2H473.219V81.92H444.291C444.291 81.92 444.12 80.9386 443.779 78.976C443.523 77.0133 443.224 74.1973 442.883 70.528C442.627 66.8587 442.499 62.5493 442.499 57.6V19.2Z" fill="#F5EBDE"/>
+          </g>
+          <g class="b-x">
+            <path d="M583.04 0H596.005H609.983H624L566.4 48.64L565.12 49.664L528 81.92H487.04L536.36 40.5747L547.2 31.488L548.096 30.72L556.162 23.6292L572.455 9.30571L583.04 0ZM529.28 0L530.52 1.08993L556.162 23.6292L565.248 31.616L566.016 32.384L625.28 81.92H584.32L545.664 48.512L545.152 48L536.36 40.5747L530.457 35.5891L488.32 0H529.28Z" fill="#F5EBDE"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M487.04 81.92C499.04 72.9776 530.2 55.5991 556.2 57.6237L584.32 81.92C584.32 81.92 546.787 23.3381 609.983 0H596.005C594.063 0.797472 578.121 7.33295 572.455 9.30571L556.162 23.6292L530.52 1.08993C531.81 6.01242 536.272 25.2531 530.2 35.3521L530.457 35.5891L536.36 40.5747L487.04 81.92Z" fill="#FF4800"/>
+          </g>
+        </svg>
+      </a>
+      <button class="sidebar-collapse" type="button" aria-label="Recolher menu" data-sidebar-toggle title="Recolher menu (·)">
+        <svg width="16" height="16"><use href="#i-collapse"/></svg>
+      </button>
+    </header>
+
+    <div class="sidebar-search" data-search-root>
+      <div class="sidebar-search-field">
+        <svg class="search-icon" width="13" height="13"><use href="#i-search"/></svg>
+        <input type="text" placeholder="Buscar…" aria-label="Buscar páginas do brandbook" data-search-input autocomplete="off" spellcheck="false"/>
+        <kbd>⌘K</kbd>
+      </div>
+      <div class="search-results" data-search-results hidden></div>
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Navegação principal">
+      <div class="nav-group">
+        <h4>Foundations</h4>
+        <ul>
+          <li><a href="01-overview.html" data-tooltip="Overview"><span class="nav-ico"><svg><use href="#i-overview"/></svg></span><span class="label-text">Overview</span></a></li>
+          <li><a href="02-foundations.html" data-tooltip="Mission &amp; Values"><span class="nav-ico"><svg><use href="#i-mission"/></svg></span><span class="label-text">Mission &amp; Values</span></a></li>
+          <li><a href="03-strategy.html" data-tooltip="Strategy"><span class="nav-ico"><svg><use href="#i-strategy"/></svg></span><span class="label-text">Strategy</span></a></li>
+          <li><a href="04-archetypes.html" data-tooltip="Archetypes"><span class="nav-ico"><svg><use href="#i-archetypes"/></svg></span><span class="label-text">Archetypes</span></a></li>
+          <li><a href="05-manifesto.html" data-tooltip="Manifesto"><span class="nav-ico"><svg><use href="#i-manifesto"/></svg></span><span class="label-text">Manifesto</span></a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <h4>Expression</h4>
+        <ul>
+          <li><a href="06-voice-tone.html" data-tooltip="Voice &amp; Tone"><span class="nav-ico"><svg><use href="#i-voice"/></svg></span><span class="label-text">Voice &amp; Tone</span></a></li>
+          <li><a href="07-moodboard.html" data-tooltip="Moodboard"><span class="nav-ico"><svg><use href="#i-moodboard"/></svg></span><span class="label-text">Moodboard</span></a></li>
+          <li><a href="08-logo.html" data-tooltip="Logo"><span class="nav-ico"><svg><use href="#i-logo"/></svg></span><span class="label-text">Logo</span></a></li>
+          <li><a href="09-color.html" data-tooltip="Color"><span class="nav-ico"><svg><use href="#i-color"/></svg></span><span class="label-text">Color</span></a></li>
+          <li><a href="10-typography.html" data-tooltip="Typography"><span class="nav-ico"><svg><use href="#i-typography"/></svg></span><span class="label-text">Typography</span></a></li>
+          <li><a href="11-iconography.html" data-tooltip="Iconography"><span class="nav-ico"><svg><use href="#i-iconography"/></svg></span><span class="label-text">Iconography</span></a></li>
+          <li><a href="12-imagery.html" data-tooltip="Imagery"><span class="nav-ico"><svg><use href="#i-imagery"/></svg></span><span class="label-text">Imagery</span></a></li>
+          <li><a href="13-illustrations.html" data-tooltip="Illustrations"><span class="nav-ico"><svg><use href="#i-illustrations"/></svg></span><span class="label-text">Illustrations</span></a></li>
+          <li><a href="14-motion.html" data-tooltip="Motion"><span class="nav-ico"><svg><use href="#i-motion"/></svg></span><span class="label-text">Motion</span></a></li>
+          <li><a href="15-audio.html" data-tooltip="Audio"><span class="nav-ico"><svg><use href="#i-audio"/></svg></span><span class="label-text">Audio</span></a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <h4>Design System</h4>
+        <ul>
+          <li><a href="16-ds-tokens.html" data-tooltip="Tokens"><span class="nav-ico"><svg><use href="#i-tokens"/></svg></span><span class="label-text">Tokens</span></a></li>
+          <li><a href="17-ds-layout.html" data-tooltip="Layout"><span class="nav-ico"><svg><use href="#i-layout"/></svg></span><span class="label-text">Layout</span></a></li>
+          <li><a href="18-ds-components.html" data-tooltip="Components"><span class="nav-ico"><svg><use href="#i-components"/></svg></span><span class="label-text">Components</span></a></li>
+          <li><a href="19-ds-inputs.html" data-tooltip="Inputs"><span class="nav-ico"><svg><use href="#i-inputs"/></svg></span><span class="label-text">Inputs</span></a></li>
+          <li><a href="20-ds-data-display.html" data-tooltip="Data Display"><span class="nav-ico"><svg><use href="#i-data"/></svg></span><span class="label-text">Data Display</span></a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <h4>Showcase</h4>
+        <ul>
+          <li><a href="21-showcase-editorial.html" data-tooltip="Editorial"><span class="nav-ico"><svg><use href="#i-editorial"/></svg></span><span class="label-text">Editorial</span></a></li>
+          <li><a href="22-showcase-mockups.html" data-tooltip="Mockups"><span class="nav-ico"><svg><use href="#i-mockups"/></svg></span><span class="label-text">Mockups</span></a></li>
+          <li><a href="23-showcase-social.html" data-tooltip="Social"><span class="nav-ico"><svg><use href="#i-social"/></svg></span><span class="label-text">Social</span></a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <h4>Practice</h4>
+        <ul>
+          <li><a href="24-accessibility.html" data-tooltip="Accessibility"><span class="nav-ico"><svg><use href="#i-accessibility"/></svg></span><span class="label-text">Accessibility</span></a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Powered by Fatax Growth — lockup oficial de rodapé -->
+    <a class="sidebar-foot poweredby" href="index.html" aria-label="Powered by Fatax Growth">
+      <img class="poweredby-mark" src="shared/logo-fatax-mark-cream.svg" alt=""/>
+      <div class="poweredby-text">
+        <span class="poweredby-eyebrow">Powered by</span>
+        <span class="poweredby-title">Fatax <em>Growth</em></span>
+      </div>
+    </a>
+  </div>
+</aside>

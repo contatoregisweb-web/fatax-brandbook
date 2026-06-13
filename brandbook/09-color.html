@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>09 · Color — Fatax Brandbook</title>
+<link rel="stylesheet" href="shared/style.css" />
+<style>
+  .color-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    margin-bottom: var(--s-xl);
+  }
+  .color-hero > div {
+    padding: var(--s-3xl);
+    display: flex; flex-direction: column;
+    min-height: 260px;
+  }
+  .color-hero .a { background: var(--brand-orange); color: var(--on-orange); }
+  .color-hero .b { background: var(--brand-cream); color: var(--brand-black); }
+  .color-hero .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: var(--s-md);
+    opacity: 0.65;
+    font-weight: 700;
+  }
+  .color-hero .name {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin: auto 0 var(--s-md);
+  }
+  .color-hero .hex {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: var(--s-sm);
+  }
+  .color-hero .meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    opacity: 0.7;
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+  }
+
+  /* Big swatch (variants) */
+  .vrow {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    gap: var(--s-md);
+    margin-top: var(--s-lg);
+  }
+  .vrow .lbl {
+    display: flex; flex-direction: column; justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+  .vrow .lbl b { color: var(--brand-cream); display: block; font-size: 16px; margin-bottom: 4px; font-family: var(--font-sans); letter-spacing: -0.005em; text-transform: none; }
+  .vbox {
+    height: 92px;
+    border-radius: var(--r-sm);
+    padding: var(--s-md);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    border: 1px solid var(--border-soft);
+  }
+  .vbox .h {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .vbox .n {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    opacity: 0.7;
+  }
+
+  /* Contrast matrix */
+  .contrast {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-md);
+  }
+  .contrast .cell {
+    border-radius: var(--r-md);
+    padding: var(--s-xl);
+    min-height: 140px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    border: 1px solid var(--border-soft);
+  }
+  .contrast .cell .label-row {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    font-weight: 700;
+  }
+  .contrast .cell .demo {
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.012em;
+    line-height: 1.1;
+  }
+  .contrast .cell .ratio {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; justify-content: space-between;
+  }
+  .contrast .cell .ratio .pass {
+    color: var(--success);
+    background: var(--success-soft);
+    padding: 2px 6px;
+    border-radius: var(--r-xs);
+  }
+  .contrast .cell .ratio .warn {
+    color: var(--warning);
+    background: var(--warning-soft);
+    padding: 2px 6px;
+    border-radius: var(--r-xs);
+  }
+  .contrast .cell .ratio .fail {
+    color: var(--danger);
+    background: var(--danger-soft);
+    padding: 2px 6px;
+    border-radius: var(--r-xs);
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div data-include="sidebar"></div>
+  <main class="main">
+
+    <div class="topbar">
+      <span class="crumbs">
+        <span>Brandbook</span><span class="sep">/</span>
+        <span>Expression</span><span class="sep">/</span>
+        <span class="here">Color</span>
+      </span>
+      <span class="spacer"></span>
+    </div>
+
+    <header class="section-header">
+      <div class="left">
+        <div class="eyebrow"><span class="pip"></span>Color System</div>
+        <h1><span class="accent">Cor.</span> <span class="dim">Três camadas, uma marca.</span></h1>
+        <p class="kicker">
+          A paleta vive em três camadas que nunca se misturam: estrutura (preto + cinzas neutros),
+          marca (cream + orange) e sistema (semânticos calibrados). Cada token tem propósito único.
+        </p>
+      </div>
+      <div class="right">
+        <div class="big">09</div>
+        Color<br>System
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- HERO: as duas cores de marca -->
+      <section class="block">
+        <div class="label"><span class="num">01</span>Brand</div>
+        <div class="body">
+          <h2>As duas cores de marca.</h2>
+          <p>
+            A Fatax é uma marca <strong>bicolor por princípio</strong>. Toda peça precisa exibir ou o creme,
+            ou o laranja, ou os dois juntos — sem isso, a identidade se dissolve no preto.
+          </p>
+
+          <div class="color-hero">
+            <div class="a">
+              <div class="label">Primary · Brand</div>
+              <div class="name">Fatax Orange</div>
+              <div class="hex">#FF4800</div>
+              <div class="meta">
+                RGB&nbsp;&nbsp;255 · 72 · 0<br>
+                HSL&nbsp;&nbsp;17 · 100% · 50%<br>
+                OKLCH&nbsp;&nbsp;67% · 0.21 · 38<br>
+                CMYK&nbsp;&nbsp;0 · 72 · 100 · 0
+              </div>
+            </div>
+            <div class="b">
+              <div class="label">Secondary · Brand</div>
+              <div class="name">Fatax Cream</div>
+              <div class="hex">#F5EBDE</div>
+              <div class="meta">
+                RGB&nbsp;&nbsp;245 · 235 · 222<br>
+                HSL&nbsp;&nbsp;34 · 53% · 92%<br>
+                OKLCH&nbsp;&nbsp;94% · 0.02 · 75<br>
+                CMYK&nbsp;&nbsp;0 · 4 · 9 · 4
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--s-xl)">Variantes funcionais</h3>
+          <p>Cada cor de marca tem variantes para hover, pressed e fundos suaves. Não invente nova variante.</p>
+
+          <div class="vrow">
+            <div class="lbl"><b>Orange</b> · interação</div>
+            <div class="vbox" style="background:#FF6A2E; color:#fff"><div class="h">primary-hover</div><div class="n">#FF6A2E</div></div>
+            <div class="vbox" style="background:#FF4800; color:#fff"><div class="h">primary</div><div class="n">#FF4800</div></div>
+            <div class="vbox" style="background:#D63D00; color:#fff"><div class="h">primary-pressed</div><div class="n">#D63D00</div></div>
+          </div>
+          <div class="vrow">
+            <div class="lbl"><b>Orange</b> · soft</div>
+            <div class="vbox" style="background:#3A1A0C; color:#FF4800"><div class="h">primary-tint</div><div class="n">#3A1A0C</div></div>
+            <div class="vbox" style="background:#2E1408; color:#FF4800"><div class="h">primary-soft</div><div class="n">#2E1408</div></div>
+            <div class="vbox" style="background:#190905; color:#FF6A2E"><div class="h">primary-deep</div><div class="n">#190905</div></div>
+          </div>
+          <div class="vrow">
+            <div class="lbl"><b>Cream</b> · texto</div>
+            <div class="vbox" style="background:#F5EBDE; color:#0A0A0A"><div class="h">cream</div><div class="n">#F5EBDE</div></div>
+            <div class="vbox" style="background:#C9C0B4; color:#0A0A0A"><div class="h">cream-dark</div><div class="n">#C9C0B4</div></div>
+            <div class="vbox" style="background:rgba(245,235,222,0.08); color:#F5EBDE"><div class="h">cream-soft</div><div class="n">8% opacity</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Surfaces -->
+      <section class="block">
+        <div class="label"><span class="num">02</span>Surfaces</div>
+        <div class="body">
+          <h2>Estrutura — preto absoluto.</h2>
+          <p>
+            A elevação acontece por <strong>cor</strong>, não por sombra. Empilhe surfaces por contraste:
+            <span class="mono">background → surface → surface-raised</span>. Nunca use preto puro (<span class="mono">#000</span>) —
+            quebra a hierarquia.
+          </p>
+
+          <div class="swatch-grid">
+            <div class="swatch-group-head"><span>Surfaces</span><span>5 tokens · escala preta</span></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#0A0A0A"></div><div class="swatch-name">background</div><div class="swatch-hex">#0A0A0A</div><div class="swatch-rgb">RGB 10 · 10 · 10</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#141414"></div><div class="swatch-name">surface</div><div class="swatch-hex">#141414</div><div class="swatch-rgb">RGB 20 · 20 · 20</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#1C1C1C"></div><div class="swatch-name">surface-raised</div><div class="swatch-hex">#1C1C1C</div><div class="swatch-rgb">RGB 28 · 28 · 28</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#050506"></div><div class="swatch-name">surface-sunken</div><div class="swatch-hex">#050506</div><div class="swatch-rgb">RGB 5 · 5 · 6</div></div>
+
+            <div class="swatch-group-head"><span>Borders</span><span>3 tokens · contraste sutil</span></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#1A1A1A"></div><div class="swatch-name">border-soft</div><div class="swatch-hex">#1A1A1A</div><div class="swatch-rgb">divisões internas</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#262626"></div><div class="swatch-name">border</div><div class="swatch-hex">#262626</div><div class="swatch-rgb">padrão</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#363636"></div><div class="swatch-name">border-strong</div><div class="swatch-hex">#363636</div><div class="swatch-rgb">ênfase</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#0A0A0A; border:1px solid var(--border)"></div><div class="swatch-name">overlay</div><div class="swatch-hex">rgba(0,0,0,0.85)</div><div class="swatch-rgb">modais</div></div>
+
+            <div class="swatch-group-head"><span>Text</span><span>4 níveis · escala cream</span></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#F5EBDE"></div><div class="swatch-name">text-primary</div><div class="swatch-hex">#F5EBDE</div><div class="swatch-rgb">manchetes, valores</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#9C9489"></div><div class="swatch-name">text-secondary</div><div class="swatch-hex">#9C9489</div><div class="swatch-rgb">descrições</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#6B655D"></div><div class="swatch-name">text-muted</div><div class="swatch-hex">#6B655D</div><div class="swatch-rgb">helper, metadata</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#3A3631"></div><div class="swatch-name">text-disabled</div><div class="swatch-hex">#3A3631</div><div class="swatch-rgb">estados inativos</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Semantic -->
+      <section class="block">
+        <div class="label"><span class="num">03</span>Semantic</div>
+        <div class="body">
+          <h2>Sistema — semânticos calibrados.</h2>
+          <p>
+            Os quatro estados (success/warning/danger/info) foram dessaturados de propósito —
+            não disputam atenção com a marca. Cada um tem variante <span class="mono">*-soft</span>
+            para fundos discretos.
+          </p>
+
+          <div class="swatch-grid">
+            <div class="swatch-group-head"><span>Sólidos</span><span>4 tokens</span></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#3FB76E"></div><div class="swatch-name">success</div><div class="swatch-hex">#3FB76E</div><div class="swatch-rgb">deltas positivos</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#F2B33B"></div><div class="swatch-name">warning</div><div class="swatch-hex">#F2B33B</div><div class="swatch-rgb">atenção</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#E5484D"></div><div class="swatch-name">danger</div><div class="swatch-hex">#E5484D</div><div class="swatch-rgb">erro · destrutivo</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#5B8DEF"></div><div class="swatch-name">info</div><div class="swatch-hex">#5B8DEF</div><div class="swatch-rgb">neutro · sistema</div></div>
+
+            <div class="swatch-group-head"><span>Soft</span><span>fundos discretos</span></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#0F2A1C"></div><div class="swatch-name">success-soft</div><div class="swatch-hex">#0F2A1C</div><div class="swatch-rgb">alert · badge</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#2E2110"></div><div class="swatch-name">warning-soft</div><div class="swatch-hex">#2E2110</div><div class="swatch-rgb">alert · badge</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#2E1214"></div><div class="swatch-name">danger-soft</div><div class="swatch-hex">#2E1214</div><div class="swatch-rgb">alert · badge</div></div>
+            <div class="swatch"><div class="swatch-chip" style="background:#101A2E"></div><div class="swatch-name">info-soft</div><div class="swatch-hex">#101A2E</div><div class="swatch-rgb">alert · badge</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contrast -->
+      <section class="block">
+        <div class="label"><span class="num">04</span>Contrast</div>
+        <div class="body">
+          <h2>Contrastes — WCAG.</h2>
+          <p>
+            Pares aprovados e proibidos. Textos pequenos (<span class="mono">&lt;18px</span>) exigem
+            <strong>4.5:1</strong>; textos grandes/bold, <strong>3:1</strong>.
+          </p>
+
+          <div class="contrast">
+            <div class="cell" style="background:#FF4800; color:#FFFFFF">
+              <div class="label-row">orange + white</div>
+              <div class="demo">Aprovar fechamento</div>
+              <div class="ratio"><span>3.27:1</span><span class="pass">AA LARGE</span></div>
+            </div>
+            <div class="cell" style="background:#FF4800; color:#0A0A0A">
+              <div class="label-row">orange + black</div>
+              <div class="demo">Aprovar fechamento</div>
+              <div class="ratio"><span>6.42:1</span><span class="warn">EVITAR · sem marca</span></div>
+            </div>
+            <div class="cell" style="background:#0A0A0A; color:#F5EBDE">
+              <div class="label-row">black + cream</div>
+              <div class="demo">Texto principal Fatax</div>
+              <div class="ratio"><span>15.9:1</span><span class="pass">AAA</span></div>
+            </div>
+            <div class="cell" style="background:#0A0A0A; color:#FF4800">
+              <div class="label-row">black + orange</div>
+              <div class="demo">Link · accent</div>
+              <div class="ratio"><span>4.85:1</span><span class="pass">AA</span></div>
+            </div>
+            <div class="cell" style="background:#F5EBDE; color:#0A0A0A">
+              <div class="label-row">cream + black</div>
+              <div class="demo">Documento institucional</div>
+              <div class="ratio"><span>15.9:1</span><span class="pass">AAA</span></div>
+            </div>
+            <div class="cell" style="background:#F5EBDE; color:#FF4800">
+              <div class="label-row">cream + orange</div>
+              <div class="demo">Accent sobre claro</div>
+              <div class="ratio"><span>3.27:1</span><span class="warn">só em grande</span></div>
+            </div>
+            <div class="cell" style="background:#141414; color:#9C9489">
+              <div class="label-row">surface + secondary</div>
+              <div class="demo">Texto secundário</div>
+              <div class="ratio"><span>5.4:1</span><span class="pass">AA</span></div>
+            </div>
+            <div class="cell" style="background:#141414; color:#6B655D">
+              <div class="label-row">surface + muted</div>
+              <div class="demo">Helper · ≥14px</div>
+              <div class="ratio"><span>3.1:1</span><span class="warn">AA LARGE</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rules -->
+      <section class="block">
+        <div class="label"><span class="num">05</span>Rules</div>
+        <div class="body">
+          <h2>Regras de cor.</h2>
+          <div class="dodont-grid">
+            <div class="dodont-card do">
+              <div class="head">Faça</div>
+              <ul>
+                <li>Texto sobre laranja = <strong>branco puro (#FFF)</strong>, sempre. Nunca preto.</li>
+                <li>Texto sobre creme = preto Fatax (#0A0A0A).</li>
+                <li>Use <span class="mono">primary-soft</span> para fundos suaves de badge/highlight.</li>
+                <li>Empilhe surfaces por contraste de cor, não por sombra.</li>
+                <li>Use semânticos com economia — eles são alarmes, não decoração.</li>
+              </ul>
+            </div>
+            <div class="dodont-card dont">
+              <div class="head">Não faça</div>
+              <ul>
+                <li>Não use preto puro <span class="mono">#000</span> no fundo.</li>
+                <li>Não use gradientes na cor da marca. Sólido sempre.</li>
+                <li>Não use cinzas frios (<span class="mono">#888</span>). Tudo é warm gray.</li>
+                <li>Não crie um segundo acento. Existe um laranja só.</li>
+                <li>Não use semânticos como cor de marca (success verde ≠ marca).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div data-pager></div>
+    </div>
+  </main>
+</div>
+<script src="shared/include.js"></script>
+</body>
+</html>

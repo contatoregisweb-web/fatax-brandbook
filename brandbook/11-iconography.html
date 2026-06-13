@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>11 · Iconography — Fatax Brandbook</title>
+<link rel="stylesheet" href="shared/style.css" />
+</head>
+<body>
+<div class="app">
+  <div data-include="sidebar"></div>
+  <main class="main">
+    <div class="topbar">
+      <span class="crumbs"><span>Brandbook</span><span class="sep">/</span><span>Expression</span><span class="sep">/</span><span class="here">Iconography</span></span>
+      <span class="spacer"></span>
+    </div>
+    <header class="section-header">
+      <div class="left">
+        <div class="eyebrow"><span class="pip"></span>Iconography</div>
+        <h1><span class="accent">Ícones.</span> <span class="dim">Linguagem visual auxiliar.</span></h1>
+        <p class="kicker">O ícone substitui palavra quando o ícone é universal. Quando não é, escreva. O sistema Fatax é <strong>híbrido por design</strong>: sprite custom para navegação e conceitos recorrentes da marca, Lucide inline para tudo o mais. Mesma anatomia, dois catálogos.</p>
+      </div>
+      <div class="right"><div class="big">11</div>Iconography</div>
+    </header>
+    <div class="content">
+      
+      
+      <section class="block"><div class="label"><span class="num">01</span>Sources</div><div class="body">
+        <h2>Duas fontes, uma anatomia.</h2>
+        <p>
+          O sistema Fatax usa <strong>duas fontes de ícones</strong> que compartilham a mesma especificação
+          visual (viewBox 24, stroke 1.75–2, round, currentColor). A regra de quando usar cada uma é dura:
+        </p>
+
+        <div class="card-grid" style="margin-top:var(--s-lg)">
+          <div class="card" style="border-left:3px solid var(--brand-orange); border-radius:0 var(--r-md) var(--r-md) 0;">
+            <h4 style="color:var(--brand-orange); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-style:normal;">Sprite custom Fatax</h4>
+            <div style="font-size:16px; font-weight:700; color:var(--brand-cream); margin-bottom:var(--s-sm); letter-spacing:-0.005em">Navegação &amp; marca</div>
+            <p style="font-size:13px; color:var(--text-secondary); line-height:1.5; margin-bottom:var(--s-md)">
+              28 símbolos desenhados manualmente em estilo Feather. Vivem como <span class="mono">&lt;symbol id="i-*"&gt;</span>
+              no topo de <span class="mono">brandbook/shared/sidebar.html</span>. Cobrem cada seção do produto/brandbook
+              + utilitários (search, collapse, external).
+            </p>
+            <div style="font-family:var(--font-mono); font-size:11px; color:var(--text-muted); background:var(--surface-sunken); padding:var(--s-sm) var(--s-md); border-radius:var(--r-xs); border:1px solid var(--border-soft);">&lt;svg&gt;&lt;use href="#i-overview"/&gt;&lt;/svg&gt;</div>
+          </div>
+          <div class="card" style="border-left:3px solid var(--brand-cream); border-radius:0 var(--r-md) var(--r-md) 0;">
+            <h4 style="color:var(--brand-cream); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-style:normal;">Lucide inline</h4>
+            <div style="font-size:16px; font-weight:700; color:var(--brand-cream); margin-bottom:var(--s-sm); letter-spacing:-0.005em">UI pontual</div>
+            <p style="font-size:13px; color:var(--text-secondary); line-height:1.5; margin-bottom:var(--s-md)">
+              Botões, alerts, tooltips, KPIs, datepickers, estados vazios. Inline no markup
+              (não como dependência). Quando um ícone Lucide vira recorrente em mais de 3 lugares,
+              <strong>promova-o ao sprite</strong>.
+            </p>
+            <div style="font-family:var(--font-mono); font-size:11px; color:var(--text-muted); background:var(--surface-sunken); padding:var(--s-sm) var(--s-md); border-radius:var(--r-xs); border:1px solid var(--border-soft); white-space:pre; overflow-x:auto;">&lt;svg viewBox="0 0 24 24"
+     fill="none" stroke="currentColor"
+     stroke-width="2"&gt;…&lt;/svg&gt;</div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:var(--s-2xl)">Sprite Fatax · amostra</h3>
+        <p>Subset do sprite que vive em <span class="mono">brandbook/shared/sidebar.html</span>. Stroke 1.75, currentColor.</p>
+        <div style="display:grid; grid-template-columns: repeat(8, 1fr); gap: var(--s-md); margin-top:var(--s-lg);">
+          <div style="background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--r-sm); aspect-ratio:1; display:grid; place-items:center; color:var(--brand-cream);" title="i-overview">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1"/></svg>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--r-sm); aspect-ratio:1; display:grid; place-items:center; color:var(--brand-cream);" title="i-strategy">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--r-sm); aspect-ratio:1; display:grid; place-items:center; color:var(--brand-cream);" title="i-archetypes">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M16 13a7 7 0 0 1 6 7"/></svg>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--r-sm); aspect-ratio:1; display:grid; place-items:center; color:var(--brand-cream);" title="i-color">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l6 8.5a6 6 0 1 1-12 0z"/></svg>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--r-sm); aspect-ratio:1; display:grid; place-items:center; color:var(--brand-cream);" title="i-typography">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l6-16 6 16"/><path d="M6.5 14h7"/><path d="M17 20v-9"/><circle cx="20" cy="11" r="1.2"/></svg>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--r-sm); aspect-ratio:1; display:grid; place-items:center; color:var(--brand-cream);" title="i-motion">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l3 8 6-16 3 8h3"/></svg>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--r-sm); aspect-ratio:1; display:grid; place-items:center; color:var(--brand-cream);" title="i-search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--r-sm); aspect-ratio:1; display:grid; place-items:center; color:var(--brand-cream);" title="i-collapse">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M19 6v12"/></svg>
+          </div>
+        </div>
+        <p class="muted mono" style="margin-top:var(--s-md); font-size:11px; letter-spacing:0.08em; text-transform:uppercase">Sprite full: 28 símbolos · ver <span class="mono" style="color:var(--brand-orange)">brandbook/shared/sidebar.html</span></p>
+      </div></section>
+
+      <section class="block"><div class="label"><span class="num">02</span>Specs</div><div class="body">
+        <h2>Especificação (única para ambas).</h2>
+        <p>Sprite e Lucide compartilham a mesma anatomia visual. É isso que faz o híbrido não parecer híbrido.</p>
+        <table class="spec-table">
+          <thead><tr><th>Propriedade</th><th>Valor</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td><strong>viewBox</strong></td><td class="mono">0 0 24 24</td><td>Optical alignment em grid 24×24</td></tr>
+            <tr><td><strong>stroke-width</strong></td><td class="mono">1.75 / 2 / 2.4</td><td>1.75 UI densa + sidebar · 2 botões · 2.4 CTA grande</td></tr>
+            <tr><td><strong>linecap + linejoin</strong></td><td class="mono">round</td><td>Coerente com a geometria expansiva da Syne</td></tr>
+            <tr><td><strong>fill</strong></td><td class="mono">none</td><td>Exceto pontos sólidos (crosshair, dots de iconography)</td></tr>
+            <tr><td><strong>stroke</strong></td><td class="mono">currentColor</td><td>Herda do contexto via CSS — nunca hard-code hex</td></tr>
+            <tr><td><strong>Tamanho · sidebar nav, sm btn</strong></td><td class="mono">14px</td><td>—</td></tr>
+            <tr><td><strong>Tamanho · UI default, botão</strong></td><td class="mono">16px</td><td>—</td></tr>
+            <tr><td><strong>Tamanho · h3 inline, btn lg</strong></td><td class="mono">18–20px</td><td>—</td></tr>
+            <tr><td><strong>Tamanho · hero, empty/error</strong></td><td class="mono">20–24px</td><td>—</td></tr>
+            <tr><td><strong>Cor padrão / hover / active</strong></td><td class="mono">text-muted / brand-cream / brand-orange</td><td>Via <span class="mono">currentColor</span> no SVG</td></tr>
+          </tbody>
+        </table>
+      </div></section>
+
+      <section class="block"><div class="label"><span class="num">03</span>Promotion</div><div class="body">
+        <h2>Quando promover Lucide → sprite.</h2>
+        <p>Se um ícone Lucide aparece em <strong>3+ lugares do sistema</strong> ou representa um conceito recorrente da marca, vira <span class="mono">&lt;symbol&gt;</span> no sprite. Isso evita duplicidade de markup e centraliza a manutenção.</p>
+        <table class="spec-table" style="margin-top:var(--s-md)">
+          <thead><tr><th>Critério</th><th>Lucide inline</th><th>Sprite custom</th></tr></thead>
+          <tbody>
+            <tr><td>Frequência de uso</td><td>1–2 lugares</td><td>3+ lugares OU navegação core</td></tr>
+            <tr><td>Conceito Fatax</td><td>Genérico (close, plus, check)</td><td>Específico (pipeline, KPI, archetype)</td></tr>
+            <tr><td>Estabilidade visual</td><td>Pode mudar com refactor</td><td>Trancado — mudança precisa de PR</td></tr>
+            <tr><td>Override de cor</td><td>currentColor</td><td>currentColor</td></tr>
+          </tbody>
+        </table>
+      </div></section>
+
+      <section class="block"><div class="label"><span class="num">04</span>Rules</div><div class="body">
+        <h2>Regras.</h2>
+        <div class="dodont-grid">
+          <div class="dodont-card do">
+            <div class="head">Faça</div>
+            <ul>
+              <li>Use sprite custom para navegação, brand e conceitos Fatax recorrentes.</li>
+              <li>Use Lucide inline para UI pontual (close, plus, check, alert, etc).</li>
+              <li>Use ícone <strong>+</strong> label sempre que possível. Ícone solo só em ações universais.</li>
+              <li>Mantenha stroke consistente dentro da mesma tela.</li>
+              <li>Use <span class="mono">currentColor</span> — facilita theming e hover/active.</li>
+              <li>Promova ícone Lucide ao sprite quando aparecer em 3+ lugares.</li>
+            </ul>
+          </div>
+          <div class="dodont-card dont">
+            <div class="head">Não faça</div>
+            <ul>
+              <li>Não adicione uma terceira fonte (Heroicons, Material, Phosphor, Feather "oficial").</li>
+              <li>Não use ícones <em>filled</em> sólidos no UI — só stroke.</li>
+              <li>Não use ícones coloridos brilhantes. Cor vem do contexto.</li>
+              <li>Não use emoji decorativo no lugar de ícone funcional.</li>
+              <li>Não duplique um ícone do sprite com versão Lucide — sempre prefira o sprite quando existir.</li>
+            </ul>
+          </div>
+        </div>
+      </div></section>
+  
+      <div data-pager></div>
+    </div>
+  </main>
+</div>
+<script src="shared/include.js"></script>
+</body>
+</html>

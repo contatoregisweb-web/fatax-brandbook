@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>15 · Audio Identity — Fatax Brandbook</title>
+<link rel="stylesheet" href="shared/style.css" />
+</head>
+<body>
+<div class="app">
+  <div data-include="sidebar"></div>
+  <main class="main">
+    <div class="topbar">
+      <span class="crumbs"><span>Brandbook</span><span class="sep">/</span><span>Expression</span><span class="sep">/</span><span class="here">Audio Identity</span></span>
+      <span class="spacer"></span>
+    </div>
+
+    <header class="section-header">
+      <div class="left">
+        <div class="eyebrow"><span class="pip"></span>Audio Identity</div>
+        <h1><span class="accent">Audio.</span> <span class="dim">Identidade sonora.</span></h1>
+        <p class="kicker">A Fatax usa som com extrema parcimônia. Áudio é confirmação operacional, assinatura institucional ou narração; nunca distração.</p>
+      </div>
+      <div class="right"><div class="big">15</div>Audio</div>
+    </header>
+
+    <div class="content">
+      <section class="block">
+        <div class="label"><span class="num">01</span>Mnemonic</div>
+        <div class="body">
+          <h2>Sound logo.</h2>
+          <p>O mnemonic Fatax deve soar como um sistema que liga, confirma e segue operando. Curto, percussivo, limpo, com terminação aberta.</p>
+          <div class="example-card" style="margin-top:var(--s-lg)">
+            <div class="waveform" aria-label="Representação visual do sound logo Fatax">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <h4>1.8s · dois impactos + cauda curta</h4>
+            <p>Começa seco, acende no laranja e termina sem “jingle”. A sensação é de confirmação de sistema, não de propaganda.</p>
+            <div class="meta">percussivo · grave curto · sem melodia doce</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="label"><span class="num">02</span>UI sounds</div>
+        <div class="body">
+          <h2>Sons de UI.</h2>
+          <p>Som de interface é sempre opcional e desligado por padrão. Ele só aparece quando ajuda acessibilidade, atenção ou confirmação em fluxos críticos.</p>
+          <table class="spec-table">
+            <thead><tr><th>Evento</th><th>Som</th><th>Duração</th><th>Regra</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Tap</strong></td><td>Click seco, baixo</td><td class="mono">40–70ms</td><td>Usar apenas em painel touch ou totem.</td></tr>
+              <tr><td><strong>Success</strong></td><td>Dois tons ascendentes discretos</td><td class="mono">180–260ms</td><td>Confirma envio, aprovação ou sincronização concluída.</td></tr>
+              <tr><td><strong>Error</strong></td><td>Tom descendente curto</td><td class="mono">160–240ms</td><td>Falha de ação; nunca tocar em validação a cada tecla.</td></tr>
+              <tr><td><strong>Notification</strong></td><td>Pulso duplo</td><td class="mono">220–320ms</td><td>Somente para alerta solicitado pelo usuário.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="label"><span class="num">03</span>Voice-over</div>
+        <div class="body">
+          <h2>Voz de narração.</h2>
+          <div class="example-grid">
+            <div class="example-card">
+              <h4>Perfil</h4>
+              <p>Voz brasileira, adulta, faixa 35–55 anos. Masculina ou feminina. Sem caricatura corporativa, sem locução promocional acelerada.</p>
+              <div class="meta">calma · firme · próxima</div>
+            </div>
+            <div class="example-card">
+              <h4>Ritmo</h4>
+              <p>Médio, com pausas reais depois de números e promessas. A Fatax soa como quem domina a operação, não como quem corre para vender.</p>
+              <div class="meta">120–145 palavras/min</div>
+            </div>
+            <div class="example-card">
+              <h4>Texto</h4>
+              <p>Frases curtas. Verbos concretos. Métricas quando possível. Evitar slogans abstratos e superlativos.</p>
+              <div class="meta">método · número · decisão</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="label"><span class="num">04</span>Silence</div>
+        <div class="body">
+          <h2>Quando não usar som.</h2>
+          <div class="dodont-grid">
+            <div class="dodont-card do">
+              <div class="head">Use som</div>
+              <ul>
+                <li>Em vídeo institucional, abertura de apresentação ou podcast.</li>
+                <li>Em confirmação de tarefa longa que acabou fora do foco visual.</li>
+                <li>Em alertas críticos quando o usuário optou por áudio.</li>
+              </ul>
+            </div>
+            <div class="dodont-card dont">
+              <div class="head">Fique em silêncio</div>
+              <ul>
+                <li>Em navegação comum de dashboard.</li>
+                <li>Em cada hover, clique trivial ou validação de formulário.</li>
+                <li>Em ambientes de trabalho compartilhados sem consentimento explícito.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div data-pager></div>
+    </div>
+  </main>
+</div>
+<script src="shared/include.js"></script>
+</body>
+</html>

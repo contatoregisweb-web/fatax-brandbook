@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>17 · Layout — Fatax Brandbook</title><link rel="stylesheet" href="shared/style.css"/></head>
+<body><div class="app"><div data-include="sidebar"></div><main class="main">
+<div class="topbar"><span class="crumbs"><span>Brandbook</span><span class="sep">/</span><span>Design System</span><span class="sep">/</span><span class="here">Layout</span></span><span class="spacer"></span></div>
+<header class="section-header"><div class="left"><div class="eyebrow"><span class="pip"></span>Layout & Grid</div><h1><span class="accent">Layout.</span> <span class="dim">Grid, breakpoints, containers.</span></h1><p class="kicker">Layout não é decoração — é estrutura. Três breakpoints, grid 12 colunas no desktop, max-width disciplinado pra não esticar leitura.</p></div><div class="right"><div class="big">17</div>Layout</div></header>
+<div class="content">
+<section class="block"><div class="label"><span class="num">01</span>Breakpoints</div><div class="body">
+<h2>Breakpoints.</h2>
+<table class="spec-table">
+<thead><tr><th>Token</th><th>Range</th><th>Cols</th><th>Gutter</th><th>Pad</th></tr></thead>
+<tbody>
+<tr><td><strong>mobile</strong></td><td class="mono">≤ 640px</td><td class="mono">4</td><td class="mono">8px</td><td class="mono">16px</td></tr>
+<tr><td><strong>tablet</strong></td><td class="mono">641–1023px</td><td class="mono">8</td><td class="mono">12px</td><td class="mono">24px</td></tr>
+<tr><td><strong>desktop</strong></td><td class="mono">1024–1439px</td><td class="mono">12</td><td class="mono">16px</td><td class="mono">48px</td></tr>
+<tr><td><strong>wide</strong></td><td class="mono">≥ 1440px</td><td class="mono">12</td><td class="mono">16px</td><td class="mono">64px</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">02</span>Containers</div><div class="body">
+<h2>Max-widths.</h2>
+<p>Conteúdo nunca estica indefinidamente. Cada tipo de conteúdo tem largura máxima legível.</p>
+<table class="spec-table">
+<thead><tr><th>Tipo</th><th>Max-width</th><th>Justificativa</th></tr></thead>
+<tbody>
+<tr><td>Texto longo</td><td class="mono">680px</td><td>~70 caracteres por linha — leitura confortável</td></tr>
+<tr><td>Página de produto</td><td class="mono">1080px</td><td>Brandbook · documentação</td></tr>
+<tr><td>Dashboard</td><td class="mono">1280px</td><td>Tabelas + gráficos lado a lado</td></tr>
+<tr><td>Hero / marketing</td><td class="mono">1440px</td><td>Tipografia grande, respiro lateral</td></tr>
+<tr><td>Full bleed</td><td class="mono">100vw</td><td>Imagem hero · brand reveal</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">03</span>Grid visual</div><div class="body">
+<h2>Visualização do grid.</h2>
+<div style="background:var(--surface-sunken); border:1px solid var(--border-soft); border-radius:var(--r-md); padding:var(--s-2xl); margin-top:var(--s-md);">
+<div style="display:grid; grid-template-columns: repeat(12, 1fr); gap:16px; max-width:1080px; margin: 0 auto;">
+<div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">1</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">2</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">3</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">4</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">5</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">6</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">7</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">8</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">9</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">10</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">11</div><div style="background:var(--brand-orange-soft); height:120px; display:grid; place-items:center; font-family:var(--font-mono); font-size:11px; color:var(--brand-orange); font-weight:700;">12</div>
+</div>
+<p class="muted mono" style="margin-top:var(--s-md); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; text-align:center">12 columns · 16px gutter · max-width 1080px</p>
+</div>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">04</span>Z-index</div><div class="body">
+<h2>Z-index scale.</h2>
+<table class="spec-table">
+<thead><tr><th>Token</th><th>Valor</th><th>Uso</th></tr></thead>
+<tbody>
+<tr><td class="token">z-base</td><td class="mono">0</td><td>Conteúdo padrão</td></tr>
+<tr><td class="token">z-sticky</td><td class="mono">10</td><td>Header, topbar fixos</td></tr>
+<tr><td class="token">z-dropdown</td><td class="mono">100</td><td>Menus, autocomplete</td></tr>
+<tr><td class="token">z-overlay</td><td class="mono">500</td><td>Modal backdrop</td></tr>
+<tr><td class="token">z-modal</td><td class="mono">501</td><td>Modal content</td></tr>
+<tr><td class="token">z-toast</td><td class="mono">1000</td><td>Notificações</td></tr>
+<tr><td class="token">z-tooltip</td><td class="mono">2000</td><td>Sempre por cima</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<section class="block"><div class="label"><span class="num">05</span>Sidebar</div><div class="body">
+<h2>Sidebar &amp; estados.</h2>
+<p>O menu lateral esquerdo tem <strong>dois estados</strong>: expandido (padrão, 280 px) e recolhido (72 px, ícones + tooltip). O usuário alterna pelo botão chevron no topo do menu, pelo atalho de teclado <kbd>·</kbd>, ou abrindo a busca com <kbd>⌘</kbd>+<kbd>K</kbd> (expande automaticamente). O estado é <strong>persistido por sistema</strong> em <span class="mono">localStorage["fatax.sidebar.collapsed"]</span> — abrir um novo painel já vem como o usuário deixou.</p>
+
+<table class="spec-table" style="margin-top:var(--s-md)">
+<thead><tr><th>Token</th><th>Valor</th><th>Uso</th></tr></thead>
+<tbody>
+<tr><td class="token">--sidebar-w</td><td class="mono">280px</td><td>Largura expandida</td></tr>
+<tr><td class="token">--sidebar-w-collapsed</td><td class="mono">72px</td><td>Largura recolhida (ícone + padding)</td></tr>
+<tr><td><strong>Transição</strong></td><td class="mono">200ms · ease-std</td><td>width + grid-template-columns</td></tr>
+<tr><td><strong>Tooltip flyout</strong></td><td class="mono">opacity + 4px slide</td><td>Aparece no hover em estado recolhido</td></tr>
+<tr><td><strong>Persistência</strong></td><td class="mono">localStorage</td><td>chave <span class="mono">fatax.sidebar.collapsed</span> · "1" ou "0"</td></tr>
+<tr><td><strong>Lockup obrigatório</strong></td><td colspan="2">"Powered by Fatax Growth" no rodapé (ver <a href="08-logo.html" style="color:var(--brand-orange)">08 · Logo · Lockup</a>)</td></tr>
+</tbody>
+</table>
+
+<h3 style="margin-top:var(--s-xl)">Como funciona.</h3>
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--s-md); margin-top:var(--s-md);">
+<div class="card" style="background:var(--surface);">
+<h4 style="color:var(--brand-orange); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-style:normal;">Expandido · 280 px</h4>
+<ul style="display:flex; flex-direction:column; gap:6px; margin-top:var(--s-sm); font-size:13px; color:var(--text-secondary);">
+<li>· Wordmark completo no topo</li>
+<li>· Input de busca com placeholder + atalho ⌘K</li>
+<li>· Grupos com títulos em italic ("Foundations", "Expression"…)</li>
+<li>· Cada item: ícone + label + meta operacional opcional</li>
+<li>· Rodapé: lockup "Powered by Fatax Growth" completo</li>
+</ul>
+</div>
+<div class="card" style="background:var(--surface);">
+<h4 style="color:var(--brand-orange); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.12em; font-size:11px; font-style:normal;">Recolhido · 72 px</h4>
+<ul style="display:flex; flex-direction:column; gap:6px; margin-top:var(--s-sm); font-size:13px; color:var(--text-secondary);">
+<li>· Apenas o mark X</li>
+<li>· Busca vira ícone — click expande &amp; foca</li>
+<li>· Itens viram ícones centralizados</li>
+<li>· Tooltip flutuante revela o label no hover</li>
+<li>· Rodapé: apenas o mark, com tooltip "Powered by Fatax Growth"</li>
+</ul>
+</div>
+</div>
+
+<h3 style="margin-top:var(--s-xl)">Regras de implementação.</h3>
+<div class="dodont-grid" style="margin-top:var(--s-md)">
+<div class="dodont-card do">
+<div class="head"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Faça</div>
+<ul>
+<li>Aplique <span class="mono">data-sidebar="collapsed"</span> no <span class="mono">&lt;html&gt;</span> antes do primeiro paint — evita flash.</li>
+<li>Mantenha a transição de 200ms — abaixo disso é abrupto, acima parece travado.</li>
+<li>Tooltip aparece com 4px de slide-in da esquerda — micro-anima sem barulho.</li>
+<li>Inclua o lockup "Powered by Fatax Growth" no rodapé · obrigatório.</li>
+</ul>
+</div>
+<div class="dodont-card dont">
+<div class="head"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Não faça</div>
+<ul>
+<li>Não use animação de slide horizontal — só width transition.</li>
+<li>Não esconda o toggle quando recolhido — usuário precisa do caminho de volta.</li>
+<li>Não mostre labels truncados; ou label completo, ou só ícone.</li>
+<li>Não troque a navegação por hamburger no desktop — o recolhido já é a versão compacta.</li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<div data-pager></div></div>
+</main></div><script src="shared/include.js"></script></body></html>

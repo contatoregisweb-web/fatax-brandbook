@@ -1,0 +1,36 @@
+name: Tokens · drift check
+
+on:
+  pull_request:
+    paths:
+      - 'DESIGN.md'
+      - 'codegen/**'
+      - 'dist/tokens.css'
+      - 'dist/tailwind.config.js'
+      - 'dist/tokens.dtcg.json'
+  push:
+    branches: [main]
+    paths:
+      - 'DESIGN.md'
+      - 'codegen/**'
+
+jobs:
+  tokens-check:
+    name: tokens in sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install codegen deps
+        working-directory: ./codegen
+        run: npm install --no-audit --no-fund
+      - name: Check tokens are in sync with DESIGN.md
+        working-directory: ./codegen
+        run: npm run check
+      - name: Failure message
+        if: failure()
+        run: |
+          echo "::error::DESIGN.md mudou mas dist/ não foi regenerado."
+          echo "::error::Rode 'cd codegen && npm run generate' e commite os arquivos atualizados."

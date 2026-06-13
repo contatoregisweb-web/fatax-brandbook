@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>08 · Logo — Fatax Brandbook</title>
+<link rel="stylesheet" href="shared/style.css" />
+<style>
+  /* Logo page specific */
+  .lg-canvas {
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-3xl);
+    display: grid; place-items: center;
+    min-height: 240px;
+    position: relative;
+  }
+  .lg-canvas.cream { background: var(--brand-cream); }
+  .lg-canvas.orange { background: var(--brand-orange); }
+
+  .construction {
+    background: var(--brand-cream);
+    border-radius: var(--r-md);
+    padding: var(--s-3xl);
+    display: grid; place-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .construction-svg {
+    width: min(640px, 100%);
+    color: var(--brand-black);
+  }
+  .construction-svg svg { width: 100%; height: auto; display: block; }
+  .construction .legend {
+    position: absolute;
+    top: var(--s-md); left: var(--s-lg);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(0,0,0,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .usage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-md);
+  }
+  .usage-cell {
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
+  .usage-cell .stage {
+    min-height: 180px;
+    display: grid; place-items: center;
+    padding: var(--s-2xl);
+  }
+  .usage-cell .stage.black { background: var(--brand-black); }
+  .usage-cell .stage.cream { background: var(--brand-cream); }
+  .usage-cell .stage.orange { background: var(--brand-orange); }
+  .usage-cell .stage.surface { background: var(--surface); }
+  .usage-cell .stage img { max-width: 75%; height: auto; display: block; }
+  .usage-cell .foot {
+    padding: var(--s-md) var(--s-lg);
+    border-top: 1px solid var(--border-soft);
+    background: var(--surface);
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .usage-cell .foot b { color: var(--brand-cream); font-weight: 700; }
+
+  .misuse-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-md);
+  }
+  .misuse-cell {
+    border: 1px solid var(--danger-soft);
+    background: var(--surface);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    position: relative;
+  }
+  .misuse-cell .stage {
+    background: var(--background);
+    min-height: 160px;
+    display: grid; place-items: center;
+    padding: var(--s-2xl);
+    position: relative;
+  }
+  .misuse-cell .stage::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent calc(50% - 1px), var(--danger) calc(50% - 1px), var(--danger) calc(50% + 1px), transparent calc(50% + 1px));
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .misuse-cell .stage img { max-width: 60%; height: auto; opacity: 0.85; position: relative; z-index: 0; }
+  .misuse-cell .foot {
+    padding: var(--s-md) var(--s-lg);
+    display: flex; justify-content: space-between;
+    align-items: center;
+    background: var(--danger-soft);
+    color: var(--danger);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+  .misuse-cell .foot .x {
+    width: 16px; height: 16px;
+    display: grid; place-items: center;
+  }
+
+  .clearspace {
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-3xl);
+    display: grid; place-items: center;
+    position: relative;
+  }
+
+  /* Lockup demo container — used to document the official Powered-by lockup */
+  .lockup-demo {
+    background: var(--background);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-3xl);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-xl);
+  }
+  .lockup-demo .demo-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .lockup-poweredby {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-md);
+    padding: var(--s-md) var(--s-lg);
+    border-radius: var(--r-sm);
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-soft);
+  }
+  .lockup-poweredby img {
+    width: 32px;
+    height: auto;
+    flex-shrink: 0;
+  }
+  .lockup-poweredby .pb-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .lockup-poweredby .pb-eyebrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .lockup-poweredby .pb-title {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brand-cream);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .lockup-poweredby .pb-title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--brand-orange);
+    font-weight: 400;
+    margin-left: 2px;
+  }
+
+  /* Sidebar miniature showing where the lockup lives */
+  .sidebar-mini {
+    width: 220px;
+    height: 320px;
+    background: var(--surface-sunken);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-sm);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .sidebar-mini .mini-brand {
+    height: 16px;
+    width: 60px;
+    background: var(--brand-cream);
+    border-radius: 2px;
+    opacity: 0.85;
+  }
+  .sidebar-mini .mini-search {
+    height: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .sidebar-mini .mini-row {
+    height: 18px;
+    background: var(--surface);
+    border-radius: 3px;
+    opacity: 0.55;
+  }
+  .sidebar-mini .mini-row.big { height: 22px; opacity: 0.7; }
+  .sidebar-mini .mini-spacer { flex: 1; }
+  .sidebar-mini .mini-footer {
+    border-top: 1px solid var(--border-soft);
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+  .sidebar-mini .mini-footer img { width: 18px; }
+  .sidebar-mini .mini-footer-text {
+    display: flex; flex-direction: column;
+    gap: 2px;
+  }
+  .sidebar-mini .mini-footer-text span:first-child {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 9px;
+    color: var(--text-muted);
+  }
+  .sidebar-mini .mini-footer-text span:last-child {
+    font-size: 10px;
+    color: var(--brand-cream);
+    font-weight: 700;
+  }
+  .lockup-anatomy {
+    display: flex;
+    gap: var(--s-2xl);
+    align-items: flex-start;
+  }
+  .lockup-anatomy .caption {
+    flex: 1;
+    min-width: 0;
+  }
+  .lockup-anatomy .caption .ann {
+    display: flex;
+    gap: var(--s-sm);
+    align-items: flex-start;
+    padding: var(--s-sm) 0;
+    border-bottom: 1px dashed var(--border-soft);
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .lockup-anatomy .caption .ann:last-child { border-bottom: 0; }
+  .lockup-anatomy .caption .ann b { color: var(--brand-orange); font-weight: 700; min-width: 18px; font-family: var(--font-mono); }
+  .lockup-anatomy .caption .ann strong { color: var(--brand-cream); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div data-include="sidebar"></div>
+  <main class="main">
+
+    <div class="topbar">
+      <span class="crumbs">
+        <span>Brandbook</span><span class="sep">/</span>
+        <span>Expression</span><span class="sep">/</span>
+        <span class="here">Logo</span>
+      </span>
+      <span class="spacer"></span>
+    </div>
+
+    <header class="section-header">
+      <div class="left">
+        <div class="eyebrow"><span class="pip"></span>Logo &amp; Mark</div>
+        <h1><span class="accent">Logo.</span> <span class="dim">Construção, variantes, regras.</span></h1>
+        <p class="kicker">
+          A marca é bicolor por princípio — creme estrutura, laranja move. O wordmark e o símbolo X não são
+          intercambiáveis: cada um tem sua função, escala mínima e contexto de uso.
+        </p>
+      </div>
+      <div class="right">
+        <div class="big">08</div>
+        Logo<br>System
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- Anatomia -->
+      <section class="block">
+        <div class="label"><span class="num">01</span>Anatomy</div>
+        <div class="body">
+          <h2>Anatomia.</h2>
+          <p>
+            O logo Fatax tem duas partes integradas em um único arquivo SVG: o <strong>wordmark</strong>
+            (a palavra "Fatax" em sans condensado) e o <strong>symbol X</strong> — duas fitas
+            diagonais que se cruzam, uma cobrindo a outra parcialmente. O X compõe a última letra
+            da palavra e nunca é destacado por gap.
+          </p>
+
+          <div class="construction">
+            <span class="legend">Construction · 626 × 84 · sobre fundo creme, partes "cream" viram preto</span>
+            <div class="construction-svg">
+              <svg viewBox="0 0 626 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M129.024 -2.28882e-05V24.32H32V35.2H111.36V56.96H32V81.92H0V-2.28882e-05H129.024Z" fill="#0A0A0A"/>
+                <path d="M178.639 83.712C169.423 83.712 161.231 82.432 154.063 79.872C146.895 77.2267 141.22 73.4293 137.039 68.48C132.943 63.5306 130.895 57.5573 130.895 50.56C130.895 43.2213 132.943 37.0773 137.039 32.128C141.22 27.1786 146.895 23.4666 154.063 20.992C161.231 18.5173 169.423 17.28 178.639 17.28C188.879 17.28 197.711 18.688 205.135 21.504C212.644 24.2346 218.404 28.1173 222.415 33.152C226.511 38.1013 228.559 43.904 228.559 50.56C228.559 55.5093 227.407 60.032 225.103 64.128C222.799 68.1387 219.471 71.6373 215.119 74.624C210.767 77.5253 205.519 79.7866 199.375 81.408C193.231 82.944 186.319 83.712 178.639 83.712ZM190.159 64.256C196.644 64.256 202.575 63.872 207.951 63.104C213.412 62.2506 217.764 60.8426 221.007 58.88C224.335 56.9173 225.999 54.144 225.999 50.56C225.999 46.8906 224.335 44.0746 221.007 42.112C217.764 40.1493 213.412 38.784 207.951 38.016C202.575 37.248 196.644 36.864 190.159 36.864C181.455 36.864 174.714 38.016 169.935 40.32C165.156 42.5386 162.767 45.952 162.767 50.56C162.767 53.5466 163.834 56.064 165.967 58.112C168.1 60.16 171.215 61.696 175.311 62.72C179.407 63.744 184.356 64.256 190.159 64.256ZM225.999 19.2H256.719V81.92H227.791C227.791 81.92 227.62 80.9386 227.279 78.976C227.023 77.0133 226.724 74.1973 226.383 70.528C226.127 66.8587 225.999 62.5493 225.999 57.6V19.2Z" fill="#0A0A0A"/>
+                <path d="M265.1 19.2H340.364V38.4H265.1V19.2ZM287.372 -2.28882e-05H318.092V81.92H287.372V-2.28882e-05Z" fill="#0A0A0A"/>
+                <path d="M395.139 83.712C385.923 83.712 377.731 82.432 370.563 79.872C363.395 77.2267 357.72 73.4293 353.539 68.48C349.443 63.5306 347.395 57.5573 347.395 50.56C347.395 43.2213 349.443 37.0773 353.539 32.128C357.72 27.1786 363.395 23.4666 370.563 20.992C377.731 18.5173 385.923 17.28 395.139 17.28C405.379 17.28 414.211 18.688 421.635 21.504C429.144 24.2346 434.904 28.1173 438.915 33.152C443.011 38.1013 445.059 43.904 445.059 50.56C445.059 55.5093 443.907 60.032 441.603 64.128C439.299 68.1387 435.971 71.6373 431.619 74.624C427.267 77.5253 422.019 79.7866 415.875 81.408C409.731 82.944 402.819 83.712 395.139 83.712ZM406.659 64.256C413.144 64.256 419.075 63.872 424.451 63.104C429.912 62.2506 434.264 60.8426 437.507 58.88C440.835 56.9173 442.499 54.144 442.499 50.56C442.499 46.8906 440.835 44.0746 437.507 42.112C434.264 40.1493 429.912 38.784 424.451 38.016C419.075 37.248 413.144 36.864 406.659 36.864C397.955 36.864 391.214 38.016 386.435 40.32C381.656 42.5386 379.267 45.952 379.267 50.56C379.267 53.5466 380.334 56.064 382.467 58.112C384.6 60.16 387.715 61.696 391.811 62.72C395.907 63.744 400.856 64.256 406.659 64.256ZM442.499 19.2H473.219V81.92H444.291C444.291 81.92 444.12 80.9386 443.779 78.976C443.523 77.0133 443.224 74.1973 442.883 70.528C442.627 66.8587 442.499 62.5493 442.499 57.6V19.2Z" fill="#0A0A0A"/>
+                <path d="M583.04 0H596.005H609.983H624L566.4 48.64L565.12 49.664L528 81.92H487.04L536.36 40.5747L547.2 31.488L548.096 30.72L556.162 23.6292L572.455 9.30571L583.04 0ZM529.28 0L530.52 1.08993L556.162 23.6292L565.248 31.616L566.016 32.384L625.28 81.92H584.32L545.664 48.512L545.152 48L536.36 40.5747L530.457 35.5891L488.32 0H529.28Z" fill="#FF4800"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M487.04 81.92C499.04 72.9776 530.2 55.5991 556.2 57.6237L584.32 81.92C584.32 81.92 546.787 23.3381 609.983 0H596.005C594.063 0.797472 578.121 7.33295 572.455 9.30571L556.162 23.6292L530.52 1.08993C531.81 6.01242 536.272 25.2531 530.2 35.3521L530.457 35.5891L536.36 40.5747L487.04 81.92Z" fill="#0A0A0A"/>
+              </svg>
+            </div>
+          </div>
+
+          <table class="spec-table" style="margin-top:var(--s-lg)">
+            <thead>
+              <tr><th>Parte</th><th>Função</th><th>Cor padrão</th><th style="text-align:right">Proporção</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Wordmark "FATA"</strong></td>
+                <td>Identidade verbal. Lê a marca.</td>
+                <td><span class="mono">#F5EBDE</span> Creme</td>
+                <td class="mono" style="text-align:right">~ 5.6×</td>
+              </tr>
+              <tr>
+                <td><strong>X — fita principal</strong></td>
+                <td>Crescimento. Movimento sobre estrutura.</td>
+                <td><span class="mono">#F5EBDE</span> Creme</td>
+                <td class="mono" style="text-align:right">~ 1.6×</td>
+              </tr>
+              <tr>
+                <td><strong>X — fita cruzada</strong></td>
+                <td>Acento. Aparece nas pontas e na interseção.</td>
+                <td class="token">#FF4800</td>
+                <td class="mono" style="text-align:right">~ 1.6×</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Variantes -->
+      <section class="block">
+        <div class="label"><span class="num">02</span>Variants</div>
+        <div class="body">
+          <h2>Variantes oficiais.</h2>
+          <p>
+            Três variantes do wordmark, escolhidas pelo fundo de aplicação. Não invente uma quarta sem aprovação de marca.
+            Sobre laranja a marca fica totalmente em creme — o X-body laranja desaparece no fundo.
+          </p>
+
+          <div class="usage-grid">
+            <div class="usage-cell">
+              <div class="stage black">
+                <img src="shared/logo-fatax-wordmark-cream.svg" alt="Wordmark cream sobre preto"/>
+              </div>
+              <div class="foot">
+                <span><b>Primária</b> · fundo escuro</span>
+                <span>#0A0A0A</span>
+              </div>
+            </div>
+            <div class="usage-cell">
+              <div class="stage cream">
+                <img src="shared/logo-fatax-wordmark-black.svg" alt="Wordmark preto sobre creme"/>
+              </div>
+              <div class="foot">
+                <span><b>Fundo claro</b> · documentos</span>
+                <span>#F5EBDE</span>
+              </div>
+            </div>
+            <div class="usage-cell">
+              <div class="stage orange">
+                <img src="shared/logo-fatax-wordmark-onorange.svg" alt="Wordmark cream-only sobre laranja"/>
+              </div>
+              <div class="foot">
+                <span><b>Sobre laranja</b> · destaque</span>
+                <span>#FF4800</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mark / X solo -->
+      <section class="block">
+        <div class="label"><span class="num">03</span>Mark</div>
+        <div class="body">
+          <h2>Mark (símbolo X) solo.</h2>
+          <p>
+            Quando o wordmark não cabe ou compete (favicon, app icon, sidebar compacta, avatar), use o
+            <strong>X isolado</strong>. As duas fitas cruzadas mantêm a leitura mesmo em escala pequena —
+            o acento de cor aparece nas quatro pontas e na interseção central.
+          </p>
+
+          <div class="usage-grid">
+            <div class="usage-cell">
+              <div class="stage black">
+                <img src="shared/logo-fatax-mark-cream.svg" alt="Mark cream sobre preto" style="width:110px; max-width:none;"/>
+              </div>
+              <div class="foot"><span><b>Padrão</b> · ≥ 24px</span><span>2 cores</span></div>
+            </div>
+            <div class="usage-cell">
+              <div class="stage cream">
+                <img src="shared/logo-fatax-mark-black.svg" alt="Mark preto sobre creme" style="width:110px; max-width:none;"/>
+              </div>
+              <div class="foot"><span><b>Sobre creme</b></span><span>X preto + laranja</span></div>
+            </div>
+            <div class="usage-cell">
+              <div class="stage orange">
+                <img src="shared/logo-fatax-mark-onorange.svg" alt="Mark cream sobre laranja" style="width:110px; max-width:none;"/>
+              </div>
+              <div class="foot"><span><b>Sobre laranja</b></span><span>cream-only</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Espaço livre -->
+      <section class="block">
+        <div class="label"><span class="num">04</span>Clearspace</div>
+        <div class="body">
+          <h2>Espaço livre &amp; tamanho mínimo.</h2>
+          <p>
+            A logo precisa de <strong>1× a altura do X</strong> de respiro em todas as direções.
+            Esse é o cordão de isolamento — nada (texto, ícone, imagem, borda) entra.
+          </p>
+
+          <div class="clearspace">
+            <div style="position:relative; padding:60px; display:inline-block;">
+              <div style="position:absolute; inset:0; border:1px dashed var(--brand-orange); border-radius:2px; pointer-events:none;"></div>
+              <div style="position:absolute; top:-10px; left:-10px; font-family:var(--font-mono); font-size:9px; color:var(--brand-orange); letter-spacing:0.1em; text-transform:uppercase; font-weight:700; background:var(--surface-sunken); padding:0 6px;">1×</div>
+              <div style="position:absolute; top:-10px; right:-10px; font-family:var(--font-mono); font-size:9px; color:var(--brand-orange); letter-spacing:0.1em; text-transform:uppercase; font-weight:700; background:var(--surface-sunken); padding:0 6px;">1×</div>
+              <div style="position:absolute; bottom:-10px; left:-10px; font-family:var(--font-mono); font-size:9px; color:var(--brand-orange); letter-spacing:0.1em; text-transform:uppercase; font-weight:700; background:var(--surface-sunken); padding:0 6px;">1×</div>
+              <div style="position:absolute; bottom:-10px; right:-10px; font-family:var(--font-mono); font-size:9px; color:var(--brand-orange); letter-spacing:0.1em; text-transform:uppercase; font-weight:700; background:var(--surface-sunken); padding:0 6px;">1×</div>
+
+              <div style="position:relative;">
+                <img src="shared/logo-fatax-wordmark-cream.svg" alt="Fatax wordmark" style="height:60px; display:block;"/>
+                <div style="position:absolute; inset:0; border:1px dashed rgba(245,235,222,0.18); pointer-events:none;"></div>
+              </div>
+            </div>
+
+            <div style="margin-top:var(--s-xl); display:flex; gap:var(--s-xl); font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted);">
+              <span><span style="display:inline-block; width:14px; height:1px; border-top:1px dashed var(--brand-orange); vertical-align:middle; margin-right:6px;"></span>Clearspace · 1× X-height</span>
+              <span><span style="display:inline-block; width:14px; height:1px; border-top:1px dashed rgba(245,235,222,0.3); vertical-align:middle; margin-right:6px;"></span>Logo bounds</span>
+            </div>
+          </div>
+
+          <table class="spec-table" style="margin-top:var(--s-lg)">
+            <thead><tr><th>Aplicação</th><th>Altura mínima</th><th style="text-align:right">Notas</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Wordmark completo</strong> — print</td><td class="mono">≥ 16 mm</td><td class="mono" style="text-align:right">cartão de visita</td></tr>
+              <tr><td><strong>Wordmark completo</strong> — digital</td><td class="mono">≥ 24 px</td><td class="mono" style="text-align:right">header, e-mail</td></tr>
+              <tr><td><strong>Mark X</strong> — favicon</td><td class="mono">≥ 16 px</td><td class="mono" style="text-align:right">manter cores</td></tr>
+              <tr><td><strong>Mark X</strong> — app icon</td><td class="mono">≥ 48 px</td><td class="mono" style="text-align:right">iOS/Android</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Misuse -->
+      <section class="block">
+        <div class="label"><span class="num">05</span>Misuse</div>
+        <div class="body">
+          <h2>Não faça.</h2>
+          <p>
+            Toda alteração visual da logo dilui a marca. Se uma aplicação parece pedir alteração, o problema é
+            a aplicação — corrija o contexto, não o logo.
+          </p>
+
+          <div class="misuse-grid">
+            <div class="misuse-cell">
+              <div class="stage">
+                <img src="shared/logo-fatax-wordmark-cream.svg" alt="" style="transform: rotate(-12deg)"/>
+              </div>
+              <div class="foot"><span class="x">✕</span>Não rotacione</div>
+            </div>
+            <div class="misuse-cell">
+              <div class="stage">
+                <img src="shared/logo-fatax-wordmark-cream.svg" alt="" style="transform: scaleY(0.5)"/>
+              </div>
+              <div class="foot"><span class="x">✕</span>Não estique</div>
+            </div>
+            <div class="misuse-cell">
+              <div class="stage">
+                <img src="shared/logo-fatax-wordmark-cream.svg" alt="" style="filter: hue-rotate(120deg)"/>
+              </div>
+              <div class="foot"><span class="x">✕</span>Não troque a cor</div>
+            </div>
+            <div class="misuse-cell">
+              <div class="stage" style="background:linear-gradient(135deg,#FF4800,#F2B33B);">
+                <img src="shared/logo-fatax-wordmark-cream.svg" alt=""/>
+              </div>
+              <div class="foot"><span class="x">✕</span>Não use sobre gradiente</div>
+            </div>
+            <div class="misuse-cell">
+              <div class="stage">
+                <img src="shared/logo-fatax-wordmark-cream.svg" alt="" style="filter:drop-shadow(0 8px 20px rgba(255,72,0,0.6))"/>
+              </div>
+              <div class="foot"><span class="x">✕</span>Não aplique sombra</div>
+            </div>
+            <div class="misuse-cell">
+              <div class="stage" style="background:#F5EBDE;">
+                <img src="shared/logo-fatax-wordmark-cream.svg" alt=""/>
+              </div>
+              <div class="foot"><span class="x">✕</span>Versão errada em fundo claro</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lockup: Powered by Fatax Growth -->
+      <section class="block">
+        <div class="label"><span class="num">06</span>Lockup</div>
+        <div class="body">
+          <h2>Lockup oficial · <em>Powered by Fatax Growth</em>.</h2>
+          <p>
+            Há <strong>um único lockup canônico</strong> da marca: a assinatura "Powered by Fatax Growth" — mark à esquerda,
+            duas linhas de texto à direita. É um <em>endossante</em>, não a marca-mãe. Use-o quando a Fatax aparece
+            como plataforma de origem de um produto, sistema ou parceiro — nunca como assinatura primária.
+          </p>
+
+          <div class="lockup-demo">
+            <span class="demo-label">Lockup · ampliado</span>
+            <div class="lockup-poweredby">
+              <img src="shared/logo-fatax-mark-cream.svg" alt=""/>
+              <div class="pb-text">
+                <span class="pb-eyebrow">Powered by</span>
+                <span class="pb-title">Fatax <em>Growth</em></span>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--s-2xl)">Anatomia do lockup.</h3>
+          <div class="lockup-anatomy">
+            <div class="sidebar-mini" aria-hidden="true">
+              <div class="mini-brand"></div>
+              <div class="mini-search"></div>
+              <div class="mini-row big"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+              <div class="mini-spacer"></div>
+              <div class="mini-footer">
+                <img src="shared/logo-fatax-mark-cream.svg" alt=""/>
+                <div class="mini-footer-text">
+                  <span>Powered by</span>
+                  <span>Fatax Growth</span>
+                </div>
+              </div>
+            </div>
+            <div class="caption">
+              <div class="ann"><b>A</b><span><strong>Mark X · 26 px</strong> · cream + orange (ou cream-only sobre laranja). Sempre à esquerda do bloco de texto.</span></div>
+              <div class="ann"><b>B</b><span><strong>Eyebrow "Powered by"</strong> · 11 px · Inter italic · cor <span class="mono">var(--text-muted)</span>. Tamanho fixo, mesmo em escala.</span></div>
+              <div class="ann"><b>C</b><span><strong>Title "Fatax <em style="color:var(--brand-orange);font-style:italic;font-family:var(--font-serif)">Growth</em>"</strong> · 13 px · Inter 700 + "Growth" em italic laranja. Único acento de cor permitido.</span></div>
+              <div class="ann"><b>D</b><span><strong>Gap interno: 12 px</strong> entre mark e texto. <strong>Padding: 16 × 12 px</strong>. <strong>Topo: borda de 1 px</strong> separando da nav.</span></div>
+              <div class="ann"><b>E</b><span><strong>Posição: rodapé do menu lateral</strong> — sempre. Nunca no header, nunca solto numa página.</span></div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--s-2xl)">Regra de aplicação · <em>obrigatório em todo menu Fatax</em>.</h3>
+          <p>
+            Todo <strong>sistema, painel, dashboard ou produto interno</strong> que utiliza este design system
+            deve incluir o lockup <em>Powered by Fatax Growth</em> no <strong>rodapé do menu lateral</strong>
+            (sidebar). É a assinatura de origem da plataforma — o equivalente visual ao "by Fatax" no canto de cada
+            ferramenta nossa. Não é decoração: é institucional.
+          </p>
+
+          <div class="dodont-grid" style="margin-top:var(--s-lg)">
+            <div class="dodont-card do">
+              <div class="head">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Faça
+              </div>
+              <ul>
+                <li>Posicione no rodapé do menu lateral, sempre alinhado ao fundo.</li>
+                <li>Use a versão cream do mark em fundos escuros; preta em fundos claros; cream-only sobre laranja.</li>
+                <li>Mantenha a hierarquia: "Powered by" pequeno e em italic, "Fatax Growth" em destaque.</li>
+                <li>Quando o menu está recolhido, mostre apenas o mark — texto reaparece em tooltip.</li>
+              </ul>
+            </div>
+            <div class="dodont-card dont">
+              <div class="head">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Não faça
+              </div>
+              <ul>
+                <li>Não esconda o lockup. Ele é obrigatório em produtos powered-by-Fatax.</li>
+                <li>Não substitua "Powered by" por "Made with", "Built on" ou variantes em inglês.</li>
+                <li>Não duplique o wordmark no header e o lockup no footer — escolha um ponto de assinatura.</li>
+                <li>Não troque a cor de "Growth" — o italic laranja é a única emoção permitida.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Download -->
+      <section class="block">
+        <div class="label"><span class="num">07</span>Files</div>
+        <div class="body">
+          <h2>Arquivos oficiais.</h2>
+          <p>SVGs vetoriais com cores embutidas, prontos pra usar. Sete arquivos cobrem todos os contextos.</p>
+          <table class="spec-table" style="margin-top:var(--s-lg)">
+            <thead><tr><th>Arquivo</th><th>Uso</th><th style="text-align:right">Caminho</th></tr></thead>
+            <tbody>
+              <tr><td><strong>logo-fatax-wordmark-cream.svg</strong></td><td>Wordmark cream + orange · fundos escuros</td><td class="mono" style="text-align:right">shared/logo-fatax-wordmark-cream.svg</td></tr>
+              <tr><td><strong>logo-fatax-wordmark-black.svg</strong></td><td>Wordmark preto + orange · fundos claros (creme/branco)</td><td class="mono" style="text-align:right">shared/logo-fatax-wordmark-black.svg</td></tr>
+              <tr><td><strong>logo-fatax-wordmark-onorange.svg</strong></td><td>Wordmark cream-only · uso EXCLUSIVO sobre laranja</td><td class="mono" style="text-align:right">shared/logo-fatax-wordmark-onorange.svg</td></tr>
+              <tr><td><strong>logo-fatax-mark-cream.svg</strong></td><td>Apenas o X · cream + orange · fundos escuros</td><td class="mono" style="text-align:right">shared/logo-fatax-mark-cream.svg</td></tr>
+              <tr><td><strong>logo-fatax-mark-black.svg</strong></td><td>Apenas o X · preto + orange · fundos claros</td><td class="mono" style="text-align:right">shared/logo-fatax-mark-black.svg</td></tr>
+              <tr><td><strong>logo-fatax-mark-onorange.svg</strong></td><td>Apenas o X · cream-only · sobre laranja</td><td class="mono" style="text-align:right">shared/logo-fatax-mark-onorange.svg</td></tr>
+              <tr><td><strong>logo-fatax-mono.svg</strong></td><td>Wordmark monocromático (<span class="mono">currentColor</span>) · usar com restrição</td><td class="mono" style="text-align:right">shared/logo-fatax-mono.svg</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div data-pager></div>
+    </div>
+  </main>
+</div>
+<script src="shared/include.js"></script>
+</body>
+</html>

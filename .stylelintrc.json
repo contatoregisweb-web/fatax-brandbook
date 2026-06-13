@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/stylelintrc",
+  "extends": ["./stylelint/index.json"],
+  "rules": {
+    "rule-empty-line-before": null,
+    "at-rule-empty-line-before": null,
+    "declaration-block-single-line-max-declarations": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "color-hex-length": null,
+    "selector-no-qualifying-type": null,
+    "no-duplicate-selectors": null,
+    "declaration-property-value-disallowed-list": {
+      "/^color$|^background-color$|^border-color$|^fill$|^stroke$/": [
+        "/^#000$|^#000000$/i",
+        "/^black$/i",
+        "/^#888$|^#888888$/i",
+        "/^#777$|^#777777$/i",
+        "/^#666$|^#666666$/i",
+        "/^#555$|^#555555$/i",
+        "/^#444$|^#444444$/i",
+        "/^#333$|^#333333$/i",
+        "/^#222$|^#222222$/i",
+        "/^#111$|^#111111$/i",
+        "/^#999$|^#999999$/i",
+        "/^#aaa$|^#aaaaaa$/i",
+        "/^#ccc$|^#cccccc$/i",
+        "/^#ddd$|^#dddddd$/i",
+        "/^#eee$|^#eeeeee$/i",
+        "/^gray$|^grey$/i"
+      ],
+      "font-family": [
+        "/Roboto/i",
+        "/Helvetica/i",
+        "/Arial/i",
+        "/Verdana/i",
+        "/Tahoma/i",
+        "/Georgia/i",
+        "/Times/i",
+        "/Playfair/i",
+        "/Open Sans/i",
+        "/Lato/i",
+        "/Nunito/i",
+        "/Poppins/i",
+        "/Montserrat/i"
+      ]
+    }
+  }
+}

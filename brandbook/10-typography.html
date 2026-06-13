@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>10 · Typography — Fatax Brandbook</title>
+<link rel="stylesheet" href="shared/style.css" />
+<style>
+  /* ── Dupla de faces (Syne + Inter) ───────────────── */
+  .duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    margin-bottom: var(--s-xl);
+  }
+  .face {
+    background: var(--surface);
+    padding: var(--s-2xl);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 380px;
+    position: relative;
+    overflow: hidden;
+  }
+  .face .role {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+  }
+  .face .role .dot {
+    width: 6px; height: 6px;
+    background: var(--brand-orange);
+    border-radius: 50%;
+  }
+  .face.body .role .dot { background: var(--brand-cream); }
+  .face .glyph {
+    font-size: clamp(120px, 14vw, 200px);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    align-self: end;
+    margin: var(--s-md) 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .face.display .glyph {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--brand-orange);
+  }
+  .face.body .glyph {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--brand-cream);
+  }
+  .face .name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--brand-cream);
+    letter-spacing: -0.025em;
+    margin-bottom: var(--s-xs);
+  }
+  .face.body .name {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: -0.025em;
+  }
+  .face .meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .face .meta hr { border: 0; border-top: 1px solid var(--border-soft); margin: var(--s-sm) 0; }
+
+  /* Big specimen showing the pairing in action */
+  .specimen {
+    background: var(--brand-black);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: var(--s-3xl);
+    margin-bottom: var(--s-xl);
+    overflow: hidden;
+  }
+  .specimen .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: var(--s-md);
+  }
+  .specimen .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: var(--lh-title);
+    letter-spacing: -0.035em;
+    color: var(--brand-cream);
+    margin-bottom: var(--s-lg);
+    text-wrap: balance;
+  }
+  .specimen .title em {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--brand-orange);
+  }
+  .specimen .lede {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: var(--lh-body);
+    color: var(--text-primary);
+    max-width: 64ch;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+  .specimen .lede strong { font-weight: 600; color: var(--brand-cream); }
+
+  /* Pesos */
+  .weights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
+  .wt {
+    background: var(--surface);
+    padding: var(--s-lg);
+    display: flex; flex-direction: column;
+    min-height: 160px;
+  }
+  .wt .num { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
+  .wt .aa { font-size: 60px; line-height: 1; margin: auto 0 var(--s-sm); color: var(--brand-cream); letter-spacing: -0.045em; }
+  .wt.display .aa { font-family: var(--font-display); }
+  .wt.body .aa { font-family: var(--font-sans); letter-spacing: -0.04em; }
+  .wt.body .aa.it { font-style: italic; }
+  .wt .name { font-family: var(--font-sans); font-size: 11px; color: var(--text-secondary); font-weight: 500; }
+
+  .weights-head {
+    grid-column: 1 / -1;
+    background: var(--surface-sunken);
+    padding: var(--s-md) var(--s-lg);
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .weights-head .fam {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--brand-cream);
+    letter-spacing: -0.025em;
+    text-transform: none;
+  }
+  .weights-head .fam.body-fam {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+  }
+  .weights-head .fam .what {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-left: var(--s-sm);
+  }
+
+  /* Type scale table */
+  .type-table { border: 1px solid var(--border-soft); border-radius: var(--r-md); overflow: hidden; background: var(--surface); }
+  .tr {
+    display: grid; grid-template-columns: 160px 1fr 240px;
+    gap: var(--s-lg);
+    padding: var(--s-xl);
+    border-top: 1px solid var(--border-soft);
+    align-items: baseline;
+  }
+  .tr:first-child { border-top: 0; }
+  .tr:hover { background: var(--surface-raised); }
+  .tk { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+  .tk b {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+  .tk .fam {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: var(--r-xs);
+  }
+  .tk .fam.display { background: var(--brand-orange-soft); color: var(--brand-orange); }
+  .tk .fam.sans { background: var(--brand-cream-soft); color: var(--brand-cream); }
+  .tk .fam.mono { background: var(--surface-raised); color: var(--text-secondary); }
+  .sp { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-align: right; }
+  .sp span { color: var(--text-secondary); }
+
+  /* DISPLAY samples (Syne) for headings — canonical DESIGN.md scale */
+  .s-display, .s-h1, .s-h2, .s-h3, .s-h4 {
+    font-family: var(--font-display);
+    color: var(--brand-cream);
+    line-height: var(--lh-title);
+    text-wrap: balance;
+  }
+  .s-display { font-size: 80px; letter-spacing: -0.035em; font-weight: 700; }
+  .s-h1 { font-size: 42px; letter-spacing: -0.028em; font-weight: 700; }
+  .s-h2 { font-size: 32px; letter-spacing: -0.024em; font-weight: 700; }
+  .s-h3 { font-size: 22px; letter-spacing: -0.018em; font-weight: 600; }
+  .s-h4 { font-size: 18px; letter-spacing: -0.014em; font-weight: 600; }
+  .s-h5 {
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: var(--lh-title);
+    color: var(--brand-cream);
+  }
+
+  /* SANS samples (Inter) for body — canonical DESIGN.md scale */
+  .s-lede, .s-body, .s-body-sm {
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    line-height: var(--lh-body);
+    text-wrap: pretty;
+  }
+  .s-lede { font-size: 17px; font-weight: 400; letter-spacing: 0; }
+  .s-body { font-size: 15px; font-weight: 400; letter-spacing: 0; }
+  .s-body-sm { font-size: 13px; font-weight: 500; letter-spacing: 0; }
+
+  /* UTILITY samples — canonical */
+  .s-cap { font-family: var(--font-sans); font-size: 12px; line-height: 1.4; font-weight: 500; color: var(--text-secondary); letter-spacing: 0; }
+  .s-caps { font-family: var(--font-sans); font-size: 12px; line-height: 1.3; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); }
+  .s-eyebrow { font-family: var(--font-sans); font-size: 11px; line-height: 1.3; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brand-orange); }
+  .s-mono { font-family: var(--font-mono); font-size: 12px; line-height: 1.45; font-weight: 500; color: var(--text-secondary); letter-spacing: 0; }
+  .s-mono-big { font-family: var(--font-mono); font-size: 40px; line-height: 1; font-weight: 700; color: var(--brand-orange); letter-spacing: -0.02em; }
+
+  /* Pairing showcase cards */
+  .pair-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-md);
+  }
+  .pair-card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-2xl);
+  }
+  .pair-card .ctx {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+    margin-bottom: var(--s-md);
+  }
+  .pair-card .demo-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: var(--lh-title);
+    letter-spacing: -0.028em;
+    color: var(--brand-cream);
+    margin-bottom: var(--s-sm);
+    text-wrap: balance;
+  }
+  .pair-card .demo-body {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: var(--lh-body);
+    color: var(--text-secondary);
+    margin-bottom: var(--s-lg);
+    letter-spacing: -0.003em;
+    text-wrap: pretty;
+  }
+  .pair-card .recipe {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    padding-top: var(--s-md);
+    border-top: 1px dashed var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s-md);
+  }
+  .pair-card .recipe span { color: var(--text-secondary); }
+
+  /* Why this pairing */
+  .why {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-md);
+    margin-bottom: var(--s-xl);
+  }
+  .why-card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-xl);
+  }
+  .why-card .glyph {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: var(--brand-orange);
+    margin-bottom: var(--s-md);
+  }
+  .why-card h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.022em;
+    color: var(--brand-cream);
+    margin-bottom: var(--s-sm);
+    line-height: var(--lh-title);
+  }
+  .why-card p {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: var(--lh-body);
+    color: var(--text-secondary);
+    text-wrap: pretty;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div data-include="sidebar"></div>
+  <main class="main">
+
+    <div class="topbar">
+      <span class="crumbs"><span>Brandbook</span><span class="sep">/</span><span>Expression</span><span class="sep">/</span><span class="here">Typography</span></span>
+      <span class="spacer"></span>
+    </div>
+
+    <header class="section-header">
+      <div class="left">
+        <div class="eyebrow"><span class="pip"></span>Typography</div>
+        <h1><span class="accent">Syne</span> <em>+</em> <span class="dim">Inter.</span></h1>
+        <p class="kicker">
+          A voz visual da Fatax: <strong>Syne</strong> dá personalidade aos títulos —
+          formas ousadas, expansivas, com presença gráfica única — enquanto <strong>Inter</strong>
+          mantém o texto corrido nítido, neutro e altamente legível em qualquer densidade.
+          Frescor para o olho, facilidade para a leitura.
+        </p>
+      </div>
+      <div class="right"><div class="big">10</div>Type<br>System</div>
+    </header>
+
+    <div class="content">
+
+      <!-- Specimen -->
+      <section class="block">
+        <div class="label"><span class="num">01</span>Specimen</div>
+        <div class="body">
+          <h2>A dupla, em ação.</h2>
+          <p>
+            Syne carrega a marca em chamadas e títulos com sua geometria expansiva.
+            Inter assume o resto: corpo, UI, formulários e qualquer texto que exija
+            leitura contínua. Cada uma no seu papel.
+          </p>
+
+          <div class="specimen">
+            <div class="eyebrow">Receita do trimestre — Q2/2026</div>
+            <div class="title">Crescer com <em>método</em>, não com sorte.</div>
+            <div class="lede">
+              A Fatax atua como <strong>braço direito do empresário</strong>, integrando
+              gestão, marketing e vendas em uma operação só. Nada de fragmentar a rotina
+              em sete fornecedores — uma equipe, um plano, um ritmo.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why this pairing -->
+      <section class="block">
+        <div class="label"><span class="num">02</span>Why</div>
+        <div class="body">
+          <h2>Por que esta dupla.</h2>
+          <p>
+            Não é decoração — é estratégia. Cada face resolve um problema específico
+            da Fatax: marca distintiva onde precisa parar o olho, e leitura sem fricção
+            onde precisa transmitir informação.
+          </p>
+
+          <div class="why">
+            <div class="why-card">
+              <div class="glyph">S</div>
+              <h4>Personalidade nos títulos</h4>
+              <p>Syne tem geometria expansiva e desenho próprio. Um título Fatax não pode parecer com um template.</p>
+            </div>
+            <div class="why-card">
+              <div class="glyph">i</div>
+              <h4>Clareza no corpo</h4>
+              <p>Inter é referência de UI moderno — alturas-x altas, contraformas abertas. Lê limpo em qualquer tamanho.</p>
+            </div>
+            <div class="why-card">
+              <div class="glyph">↔</div>
+              <h4>Contraste hierárquico</h4>
+              <p>Syne display vs. Inter neutro cria hierarquia óbvia sem precisar empilhar pesos ou cores.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Faces -->
+      <section class="block">
+        <div class="label"><span class="num">03</span>Faces</div>
+        <div class="body">
+          <h2>Duas faces, papéis distintos.</h2>
+          <p>
+            Syne ocupa display, hero, título e qualquer chamada que precise carregar a marca.
+            Inter assume corpo, UI, navegação, formulários, dashboards e tabelas. Não troque
+            os papéis sem motivo forte.
+          </p>
+
+          <div class="duo">
+            <div class="face display">
+              <div class="role"><span class="dot"></span>Display · títulos · marca</div>
+              <div class="glyph">Aa</div>
+              <div>
+                <div class="name">Syne</div>
+                <div class="meta">
+                  Foundry · Bonjour Monde<br>
+                  Designers · Bonjour Monde &amp; Lucas Descroix<br>
+                  License · SIL Open Font<br>
+                  Source · Google Fonts<br>
+                  <hr>
+                  Pesos · 500 · 600 · 700 · 800<br>
+                  Sans-serif display geométrica expansiva<br>
+                  Subsets · Latin · Latin-Extended
+                </div>
+              </div>
+            </div>
+            <div class="face body">
+              <div class="role"><span class="dot"></span>Corpo · UI · texto longo</div>
+              <div class="glyph">Aa</div>
+              <div>
+                <div class="name">Inter</div>
+                <div class="meta">
+                  Designer · Rasmus Andersson<br>
+                  License · SIL Open Font<br>
+                  Source · Google Fonts<br>
+                  <hr>
+                  Pesos · 400 · 500 · 600 · 700 + Italic<br>
+                  Sans-serif neogrotesque otimizada para tela<br>
+                  Subsets · Latin · Latin-Extended
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--s-2xl)">Pesos em uso</h3>
+          <div class="weights" style="margin-top:var(--s-md)">
+            <div class="weights-head">
+              <span><span class="fam">Syne <span class="what">display &amp; títulos</span></span></span>
+              <span>4 pesos</span>
+            </div>
+            <div class="wt display"><div class="num">500</div><div class="aa" style="font-weight:500">Aa</div><div class="name">Medium · acentos</div></div>
+            <div class="wt display"><div class="num">600</div><div class="aa" style="font-weight:600">Aa</div><div class="name">SemiBold · h2 · h3</div></div>
+            <div class="wt display"><div class="num">700</div><div class="aa" style="font-weight:700">Aa</div><div class="name">Bold · h1 · hero</div></div>
+            <div class="wt display"><div class="num">800</div><div class="aa" style="font-weight:800">Aa</div><div class="name">ExtraBold · display</div></div>
+          </div>
+
+          <div class="weights" style="margin-top:var(--s-md)">
+            <div class="weights-head">
+              <span><span class="fam body-fam">Inter <span class="what">corpo &amp; UI</span></span></span>
+              <span>4 pesos + itálico</span>
+            </div>
+            <div class="wt body"><div class="num">400</div><div class="aa" style="font-weight:400">Aa</div><div class="name">Regular · corpo padrão</div></div>
+            <div class="wt body"><div class="num">500</div><div class="aa" style="font-weight:500">Aa</div><div class="name">Medium · UI · ênfase</div></div>
+            <div class="wt body"><div class="num">600</div><div class="aa" style="font-weight:600">Aa</div><div class="name">SemiBold · sub · ações</div></div>
+            <div class="wt body"><div class="num">400i</div><div class="aa it" style="font-weight:400">Aa</div><div class="name">Italic · citação · meta</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scale -->
+      <section class="block">
+        <div class="label"><span class="num">04</span>Scale</div>
+        <div class="body">
+          <h2>Escala completa.</h2>
+          <p>
+            14 tokens com família, peso, tracking e line-height já definidos. Esta tabela é espelho 1:1 do
+            <span class="mono">DESIGN.md § typography.scale</span> — qualquer divergentência entre esta página
+            e o spec é bug. Tracking negativo apertado em Syne equilibra sua largura expansiva; Inter respira
+            em letter-spacing zero porque o desenho já cuida do resto.
+          </p>
+
+          <div class="type-table">
+            <div class="tr">
+              <div class="tk"><b>display</b>hero / section<div class="fam display">Syne</div></div>
+              <div class="s-display">Crescer com método.</div>
+              <div class="sp">80 / 1.2<br><span>−0.035em · 700</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>h1</b>block heading<div class="fam display">Syne</div></div>
+              <div class="s-h1">Pipeline comercial executivo</div>
+              <div class="sp">42 / 1.2<br><span>−0.028em · 700</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>h2</b>section heading<div class="fam display">Syne</div></div>
+              <div class="s-h2">Clientes ativos por segmento</div>
+              <div class="sp">32 / 1.2<br><span>−0.024em · 700</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>h3</b>subsection<div class="fam display">Syne</div></div>
+              <div class="s-h3">Resumo da semana</div>
+              <div class="sp">22 / 1.2<br><span>−0.018em · 600</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>h4</b>card title<div class="fam display">Syne</div></div>
+              <div class="s-h4">Próximas reuniões</div>
+              <div class="sp">18 / 1.2<br><span>−0.014em · 600</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>h5 / italic</b>eyebrow editorial<div class="fam sans">Inter italic</div></div>
+              <div class="s-h5">Atualizado há 4 minutos</div>
+              <div class="sp">14 / 1.2<br><span>0 · 400 italic</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>lede</b>primeiro parágrafo<div class="fam sans">Inter</div></div>
+              <div class="s-lede">A Fatax atua como braço direito do empresário, integrando gestão, marketing e vendas.</div>
+              <div class="sp">17 / 1.5<br><span>0 · 400</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>body</b>texto padrão<div class="fam sans">Inter</div></div>
+              <div class="s-body">Texto corrente de produto. Descrições, parágrafos, copy de interface.</div>
+              <div class="sp">15 / 1.5<br><span>0 · 400</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>body-sm</b>UI · nav · badges<div class="fam sans">Inter</div></div>
+              <div class="s-body-sm">Padrão de tabela e dashboard — densidade alta sem prejudicar leitura.</div>
+              <div class="sp">13 / 1.5<br><span>0 · 500</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>caption</b>helper · metadata<div class="fam sans">Inter</div></div>
+              <div class="s-cap">Atualizado há 4 minutos · fonte: CRM</div>
+              <div class="sp">12 / 1.4<br><span>0 · 500</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>label-caps</b>seção · KPI label<div class="fam sans">Inter</div></div>
+              <div class="s-caps">Total recorrente · MRR</div>
+              <div class="sp">12 / 1.3<br><span>+0.14em · 700</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>eyebrow</b>page eyebrow (laranja)<div class="fam sans">Inter</div></div>
+              <div class="s-eyebrow">Brand Identity System</div>
+              <div class="sp">11 / 1.3<br><span>+0.16em · 700</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>mono</b>ID · token · spec<div class="fam mono">JetBrains Mono</div></div>
+              <div class="s-mono">--brand-orange : #FF4800 · ID #28491</div>
+              <div class="sp">12 / 1.45<br><span>0 · 500</span></div>
+            </div>
+            <div class="tr">
+              <div class="tk"><b>mono-big</b>KPI · stat number<div class="fam mono">JetBrains Mono</div></div>
+              <div class="s-mono-big">R$ 248.713</div>
+              <div class="sp">40 / 1.0<br><span>−0.02em · 700</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pairing showcase -->
+      <section class="block">
+        <div class="label"><span class="num">05</span>Pairing</div>
+        <div class="body">
+          <h2>Receitas testadas.</h2>
+          <p>
+            Combinações canônicas Syne + Inter. Os outros pareamentos derivam destes —
+            não invente novos sem testar contra estes quatro.
+          </p>
+
+          <div class="pair-grid">
+            <div class="pair-card">
+              <div class="ctx">Hero de landing</div>
+              <div class="demo-title">Crescer com método, não com sorte.</div>
+              <div class="demo-body">
+                A Fatax integra gestão, marketing e vendas em uma operação só.
+                Sem fragmentar a rotina do empresário em sete fornecedores.
+              </div>
+              <div class="recipe">
+                <span>display 80 · Syne 700</span>
+                <span>lede 17 · Inter 400</span>
+              </div>
+            </div>
+
+            <div class="pair-card">
+              <div class="ctx">Cabeçalho editorial</div>
+              <div class="demo-title">Manifesto de marca</div>
+              <div class="demo-body">
+                Documento longo, leitura contínua. Título com presença gráfica
+                e corpo Inter que sustenta a página sem cansar o leitor.
+              </div>
+              <div class="recipe">
+                <span>h1 42 · Syne 700</span>
+                <span>body 15 · Inter 400</span>
+              </div>
+            </div>
+
+            <div class="pair-card">
+              <div class="ctx">Card de dashboard</div>
+              <div class="demo-title">Pipeline da semana</div>
+              <div class="demo-body">
+                Leitura rápida, contexto pequeno. Título Syne ancora;
+                descrição curta em Inter preserva a hierarquia.
+              </div>
+              <div class="recipe">
+                <span>h3 22 · Syne 600</span>
+                <span>body-sm 13 · Inter 500</span>
+              </div>
+            </div>
+
+            <div class="pair-card">
+              <div class="ctx">KPI · estatística</div>
+              <div class="demo-title" style="font-family:var(--font-sans); font-weight:700; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-secondary);">Receita recorrente</div>
+              <div class="demo-body" style="font-family:var(--font-mono); font-weight:700; font-size:40px; line-height:1; letter-spacing:-0.02em; color:var(--brand-orange); margin-top:var(--s-sm); margin-bottom:var(--s-md);">R$ 248.713,40</div>
+              <div class="recipe">
+                <span>label-caps 12 · Inter 700</span>
+                <span>mono-big 40 · JBM 700</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rules -->
+      <section class="block">
+        <div class="label"><span class="num">06</span>Rules</div>
+        <div class="body">
+          <h2>Disciplina tipográfica.</h2>
+          <div class="dodont-grid">
+            <div class="dodont-card do">
+              <div class="head">Faça</div>
+              <ul>
+                <li>Use <strong>Syne 700–800</strong> em títulos para ancorar a personalidade da marca.</li>
+                <li>Use <strong>Inter 400</strong> para todo parágrafo, lede e texto longo — é onde Inter brilha.</li>
+                <li>Aplique tracking negativo agressivo (−0.022 a −0.04em) em Syne grande.</li>
+                <li>Use <strong>Inter 500–600</strong> em UI: botões, navegação, labels de formulário.</li>
+                <li>Use <strong>JetBrains Mono</strong> em todos os números de dashboard, tabela e ID.</li>
+                <li>Mantenha o contraste: Syne pega o olho, Inter sustenta a leitura, Mono mede.</li>
+              </ul>
+            </div>
+            <div class="dodont-card dont">
+              <div class="head">Não faça</div>
+              <ul>
+                <li>Não escreva título em <strong>Inter</strong> nem corpo longo em <strong>Syne</strong> — inverte a hierarquia.</li>
+                <li>Não pareie Syne ou Inter com outras famílias (Roboto, Helvetica, Playfair). Dupla fechada.</li>
+                <li>Não use Syne em corpo abaixo de 18px — fica difícil de ler em densidade alta.</li>
+                <li>Não use letter-spacing positivo em Syne (exceto label-caps em Inter).</li>
+                <li>Não misture pesos Syne fora dos quatro definidos (500/600/700/800).</li>
+                <li>Não use tamanhos abaixo de <span class="mono">12px</span> em interface.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div data-pager></div>
+    </div>
+  </main>
+</div>
+<script src="shared/include.js"></script>
+</body>
+</html>

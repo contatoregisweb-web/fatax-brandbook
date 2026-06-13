@@ -1,0 +1,19 @@
+{
+  "name": "@fatax/visual-regression",
+  "version": "0.6.0",
+  "description": "Visual regression tests para o Fatax Design System. Snapshot pixel-a-pixel das 24 páginas do brandbook + estados interativos críticos.",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:update": "playwright test --update-snapshots",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "install:browsers": "playwright install --with-deps chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "serve": "^14.2.0"
+  }
+}
