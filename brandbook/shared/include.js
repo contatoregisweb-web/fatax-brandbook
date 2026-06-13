@@ -191,6 +191,41 @@
     try { localStorage.setItem(LS_KEY, collapsed ? '1' : '0'); } catch (_) {}
   }
 
+  function onlyDigits(value) {
+    return String(value || '').replace(/\D/g, '');
+  }
+
+  function formatCnpj(value) {
+    return onlyDigits(value).slice(0, 14)
+      .replace(/^(\d{2})(\d)/, '$1.$2')
+      .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+      .replace(/\.(\d{3})(\d)/, '.$1/$2')
+      .replace(/(\d{4})(\d)/, '$1-$2');
+  }
+
+  function formatCurrency(value) {
+    const digits = onlyDigits(value);
+    if (!digits) return '';
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(Number(digits) / 100);
+  }
+
+  function setupFormattedInputs(scope = document) {
+    const inputs = [...scope.querySelectorAll('input[data-format]')];
+    inputs.forEach((input) => {
+      const apply = () => {
+        const kind = input.dataset.format;
+        if (kind === 'cnpj') input.value = formatCnpj(input.value);
+        if (kind === 'currency-brl') input.value = formatCurrency(input.value);
+      };
+      input.setAttribute('inputmode', 'numeric');
+      input.addEventListener('input', apply);
+      apply();
+    });
+  }
+
   function setupCollapse(root) {
     const btn = root.querySelector('[data-sidebar-toggle]');
     if (!btn) return;
@@ -223,11 +258,28 @@
       return;
     }
 
-    // Mark active page
-    const page = location.pathname.split('/').pop() || 'index.html';
+    // Mark active page. Vercel serves clean URLs such as /brandbook/01-overview,
+    // while the sidebar uses file hrefs. Normalize both forms to the .html file.
+    function normalizePage(pathname) {
+      const parts = pathname.split('/').filter(Boolean);
+      let leaf = parts[parts.length - 1] || 'index';
+      if (leaf === 'brandbook') leaf = 'index';
+      leaf = leaf.split('?')[0].split('#')[0];
+      if (!leaf.endsWith('.html')) leaf += '.html';
+      return leaf;
+    }
+
+    const page = normalizePage(location.pathname);
     const links = [...document.querySelectorAll('.sidebar-nav a')];
     links.forEach(a => {
-      if (a.getAttribute('href') === page) a.classList.add('active');
+      const href = normalizePage(a.getAttribute('href') || '');
+      if (href === page) {
+        a.classList.add('active');
+        a.setAttribute('aria-current', 'page');
+      } else {
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
+      }
     });
 
     // Build prev/next pager if a [data-pager] slot exists
@@ -254,6 +306,7 @@
       const searchRoot = sidebarRoot.querySelector('[data-search-root]');
       if (searchRoot) setupSearch(searchRoot);
     }
+    setupFormattedInputs();
 
     // Re-enable transitions on next frame
     requestAnimationFrame(() => {

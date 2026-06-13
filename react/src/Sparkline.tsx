@@ -78,8 +78,8 @@ export function Sparkline({
           </linearGradient>
         </defs>
       )}
-      {showArea && <path d={areaPath} fill={`url(#${gradientId})`} />}
-      <path d={linePath} fill="none" stroke="var(--brand-orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      {showArea && <path className="sparkline-area" d={areaPath} fill={`url(#${gradientId})`} />}
+      <path className="sparkline-line" d={linePath} fill="none" stroke="var(--brand-orange)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 

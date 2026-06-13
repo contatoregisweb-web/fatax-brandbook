@@ -97,13 +97,13 @@ Já inclui: sprite SVG, brand morph, collapse persistente (`localStorage`), atal
 />
 ```
 
-### `<Button/>` — 5 variantes × 3 tamanhos
+### `<Button/>` — 6 variantes × 3 tamanhos
 
 ```tsx
 <Button variant="primary">Aprovar fechamento</Button>
 <Button variant="secondary">Cancelar</Button>
 <Button variant="ghost">Ver detalhes</Button>
-<Button variant="outline">Editar</Button>
+<Button variant="light">Editar</Button>
 <Button variant="danger" size="sm">Excluir</Button>
 
 <Button
@@ -174,14 +174,17 @@ import { Input } from '@fatax/design-system-react';
 
 <Input
   label="CNPJ"
+  format="cnpj"
+  defaultValue="12345678000190"
   placeholder="00.000.000/0000-00"
-  help="Apenas dígitos. Validação automática."
+  help="Digite só números; o campo formata automaticamente."
 />
 
 // Estado de erro
 <Input
   label="Meta mensal"
-  defaultValue="R$ -"
+  format="currency-brl"
+  defaultValue="24800000"
   error="Valor obrigatório."
 />
 
@@ -189,7 +192,7 @@ import { Input } from '@fatax/design-system-react';
 <Input type="email" label="E-mail comercial" defaultValue="contato@fatax.com.br" />
 ```
 
-### `<Toggle/>` — switch 36×20, laranja quando ON
+### `<Toggle/>` — switch 44×24, laranja quando ON
 
 ```tsx
 import { Toggle } from '@fatax/design-system-react';
@@ -198,13 +201,7 @@ const [on, setOn] = useState(true);
 <Toggle checked={on} onChange={setOn} label="Notificações por e-mail" />
 ```
 
-### `<Checkbox/>` — box 18×18 com check branco
-
-```tsx
-import { Checkbox } from '@fatax/design-system-react';
-
-<Checkbox checked={accepted} onChange={setAccepted} label="Aceito os termos" />
-```
+Regra de marca: não use checkbox em produtos Fatax. Para qualquer estado booleano, use `<Toggle/>`.
 
 ### `<Select/>` — dropdown com search inline (>8 opt)
 
@@ -342,7 +339,7 @@ import { Alert } from '@fatax/design-system-react';
 
 Variantes: `info` · `success` · `warning` · `danger` · `brand`. Ícone default por variante; passe `icon={...}` ou `hideIcon` para customizar.
 
-### `<Tooltip/>` — cream + black, 4 placements
+### `<Tooltip/>` — dark surface, 4 placements
 
 ```tsx
 import { Tooltip, Button } from '@fatax/design-system-react';
@@ -566,8 +563,8 @@ import type {
   IconProps, IconName,
   AvatarProps, AvatarStackProps, AvatarSize, AvatarTone,
   // Form
-  InputProps,
-  ToggleProps, CheckboxProps,
+  InputProps, InputFormat,
+  ToggleProps,
   RadioOption, RadioGroupProps,
   SelectProps, SelectOption,
   DatepickerProps,
@@ -588,13 +585,13 @@ import type {
 
 ---
 
-## Inventory — 26 componentes totais
+## Inventory — 25 componentes/famílias
 
 | Camada | Componentes |
 |---|---|
 | **Layout** | Sidebar · PoweredBy · Topbar · SectionHeader |
 | **Atoms** | Button · Pill · Card · Stat · Icon · FataxSprite · Avatar · AvatarStack |
-| **Form** | Input · Toggle · Checkbox · Radio + RadioGroup · Select · Datepicker |
+| **Form** | Input · Toggle · Radio + RadioGroup · Select · Datepicker |
 | **Disclosure / Overlay** | Tabs · Modal + ConfirmModal · Drawer · Tooltip |
 | **Feedback** | Alert · Skeleton · Spinner · EmptyState · ErrorState |
 | **Data Viz** | Sparkline · Funnel |

@@ -73,15 +73,25 @@
   }
 
   function markActive() {
-    const path = location.pathname;
+    function normalizePage(pathname) {
+      const parts = pathname.split('/').filter(Boolean);
+      let leaf = parts[parts.length - 1] || 'index';
+      if (leaf === 'brandbook') leaf = 'index';
+      leaf = leaf.split('?')[0].split('#')[0];
+      if (!leaf.endsWith('.html')) leaf += '.html';
+      return leaf;
+    }
+    const page = normalizePage(location.pathname);
     const links = document.querySelectorAll('.sidebar-nav a[href]');
     links.forEach((a) => {
       const href = a.getAttribute('href');
       if (!href) return;
-      // Match exact pathname OR href ending in current filename
-      const file = path.split('/').pop() || '';
-      if (href === path || (file && href.endsWith(file))) {
+      if (normalizePage(href) === page) {
         a.classList.add('active');
+        a.setAttribute('aria-current', 'page');
+      } else {
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
       }
     });
   }

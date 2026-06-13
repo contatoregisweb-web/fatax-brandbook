@@ -38,13 +38,10 @@ export type { AvatarProps, AvatarStackProps, AvatarSize, AvatarTone } from './Av
 
 // ── Form ───────────────────────────────────────────────────────────
 export { Input } from './Input';
-export type { InputProps } from './Input';
+export type { InputProps, InputFormat } from './Input';
 
 export { Toggle } from './Toggle';
 export type { ToggleProps } from './Toggle';
-
-export { Checkbox } from './Checkbox';
-export type { CheckboxProps } from './Checkbox';
 
 export { RadioGroup } from './Radio';
 export type { RadioOption, RadioGroupProps } from './Radio';

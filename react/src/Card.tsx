@@ -6,7 +6,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 // contraste de surface, nunca box-shadow para elevação).
 // ════════════════════════════════════════════════════════════════════
 
-export interface CardProps extends HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /** Título opcional, renderizado como h4 italic (label editorial). */
   title?: ReactNode;
   children: ReactNode;

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 // ════════════════════════════════════════════════════════════════════
 // @fatax/design-system-react · Toggle (switch)
-// 36×20px, brand-orange quando ON. Componente controlado.
+// 44×24px, brand-orange quando ON. Componente controlado.
 // ════════════════════════════════════════════════════════════════════
 
 export interface ToggleProps {

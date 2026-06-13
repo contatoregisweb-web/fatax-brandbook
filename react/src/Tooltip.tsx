@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 // @fatax/design-system-react · Tooltip
 // Cream + black, mono 11px. 4 placements (top/bottom/left/right).
 // Aparece no hover/focus do trigger, esconde no mouseleave/blur.
-// Distinto do tooltip flyout do Sidebar (que tem outro estilo).
+// Tooltip dark do design system, alinhado ao flyout do Sidebar.
 // ════════════════════════════════════════════════════════════════════
 
 export type TooltipPlacement = 'top' | 'bottom' | 'left' | 'right';

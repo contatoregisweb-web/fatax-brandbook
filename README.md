@@ -81,6 +81,18 @@ import '@fatax/design-system';
 import { Button, Card, Sidebar, SectionHeader } from '@fatax/design-system-react';
 ```
 
+Campos formatados:
+
+```tsx
+import { Input, Toggle } from '@fatax/design-system-react';
+
+<Input label="CNPJ" format="cnpj" defaultValue="12345678000190" />
+<Input label="Meta mensal" format="currency-brl" defaultValue="24800000" />
+<Toggle checked={true} onChange={() => {}} label="Ativo" />
+```
+
+Checkbox não é padrão Fatax. Use `Toggle` para estados booleanos em todos os produtos.
+
 Exports do pacote:
 
 - `@fatax/design-system`
@@ -118,6 +130,8 @@ npm run check
 - Paleta: preto `#0A0A0A`, creme `#F5EBDE`, laranja `#FF4800`.
 - Tipografia: Syne para display, Inter para UI/corpo, JetBrains Mono para números.
 - Voz: direta, operacional, sóbria e aliada.
+- Botão de edição/ação utilitária: branco no estado normal, creme no hover.
+- Tooltip: dark surface, texto creme e borda sutil.
 - Não usar gradiente de marca, mascote, 3D decorativo, stock photo genérica ou cores inventadas.
 
 Leia `AI_BRAND_GUIDE.md` antes de pedir a uma IA para criar qualquer tela, post, deck, imagem ou redesign da Fatax.

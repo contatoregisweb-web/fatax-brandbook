@@ -23,6 +23,12 @@ Este repositório é a fonte oficial da marca Fatax para humanos, aplicações e
 - Paleta: preto `#0A0A0A`, creme `#F5EBDE`, laranja `#FF4800`.
 - Tipografia: Syne para títulos, Inter para UI/corpo, JetBrains Mono para número/código.
 - Voz: direta, operacional, sóbria e aliada.
+- Cards usam `.card`, `.card-grid`, `.card-title`, `.card-body` e `.card-meta`; não crie estilos inline divergentes.
+- Botão utilitário de edição usa `variant="light"` ou `.btn-light`: branco no repouso, creme no hover.
+- Nunca use checkbox. Use `Toggle` para qualquer booleano.
+- Inputs de CNPJ e dinheiro devem usar formatação automática (`format="cnpj"` e `format="currency-brl"` no React ou `data-format` no brandbook).
+- Select, autocomplete e combobox devem usar o visual do design system; não deixe controles com aparência nativa do navegador.
+- Tooltips são dark surface com texto creme.
 - Nunca use gradiente de marca, mascote, stock photo genérica, 3D decorativo ou cores inventadas.
 
 ## Estrutura

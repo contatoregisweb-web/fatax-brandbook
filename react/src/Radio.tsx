@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 // ════════════════════════════════════════════════════════════════════
 // @fatax/design-system-react · Radio + RadioGroup
 // Seleção única, mutuamente exclusiva. Sempre use em grupo de 2+ opções.
-// Para 1 opção on/off, use <Checkbox> ou <Toggle>.
+// Para 1 opção on/off, use <Toggle>.
 // ════════════════════════════════════════════════════════════════════
 
 export interface RadioOption<T extends string = string> {

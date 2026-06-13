@@ -73,6 +73,10 @@ Preferir componentes/tokens existentes:
 
 - `Button`, `Card`, `Pill`, `Stat`, `Sidebar`, `Topbar`, `SectionHeader`.
 - Inputs seguem fundo escuro, borda tokenizada e foco laranja.
+- CNPJ e dinheiro usam `Input format="cnpj"` e `Input format="currency-brl"`; o usuário digita só números e o campo formata.
+- Nunca use checkbox. Estado booleano em produto Fatax é sempre `Toggle` com track laranja ON, track escuro OFF e knob branco.
+- Dropdown, autocomplete e combobox não podem cair no estilo nativo do navegador; use o Select/Combobox visual do design system.
+- Tooltip é dark surface, texto creme, borda sutil e entrada curta.
 - Tabelas são densas, com cabeçalho escuro e números em mono.
 - Sidebar deve manter o lockup **Powered by Fatax Growth** quando usada como produto endossado.
 

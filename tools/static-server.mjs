@@ -21,6 +21,7 @@ createServer((req, res) => {
   const safePath = normalize(pathname).replace(/^(\.\.[/\\])+/, '');
   let filePath = join(root, safePath);
   if (existsSync(filePath) && statSync(filePath).isDirectory()) filePath = join(filePath, 'index.html');
+  if (!existsSync(filePath) && !extname(filePath) && existsSync(`${filePath}.html`)) filePath = `${filePath}.html`;
   if (!filePath.startsWith(root) || !existsSync(filePath) || !statSync(filePath).isFile()) {
     res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' });
     res.end('Not found');

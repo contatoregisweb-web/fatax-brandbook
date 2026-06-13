@@ -49,33 +49,14 @@
   .tab:hover { color: var(--brand-cream); }
   .tab.active { color: var(--brand-cream); border-color: var(--brand-orange); }
 
-  /* Toggle */
-  .toggle { width: 36px; height: 20px; background: var(--surface-raised); border-radius: var(--r-full); position: relative; cursor: pointer; transition: background var(--dur-fast); }
-  .toggle::after { content: ""; width: 16px; height: 16px; background: var(--brand-cream); border-radius: var(--r-full); position: absolute; top: 2px; left: 2px; transition: left var(--dur-base) var(--ease-out); }
-  .toggle.on { background: var(--brand-orange); }
-  .toggle.on::after { left: 18px; background: #fff; }
-
-  /* Checkbox */
-  .check { width: 18px; height: 18px; border: 1.5px solid var(--border-strong); border-radius: var(--r-xs); display: grid; place-items: center; cursor: pointer; }
-  .check.on { background: var(--brand-orange); border-color: var(--brand-orange); }
-  .check.on::after { content: "✓"; color: #fff; font-size: 13px; font-weight: 700; line-height: 1; }
-
   /* Progress */
   .progress { height: 6px; background: var(--surface-raised); border-radius: var(--r-full); overflow: hidden; }
   .progress > div { height: 100%; background: var(--brand-orange); border-radius: var(--r-full); }
 
   /* Tooltip */
-  .ttip-wrap { position: relative; display: inline-flex; }
   .ttip {
-    position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-    background: var(--brand-cream); color: var(--brand-black);
-    padding: 6px 10px; border-radius: var(--r-xs);
-    font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
-    white-space: nowrap;
-  }
-  .ttip::after {
-    content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-    border: 4px solid transparent; border-top-color: var(--brand-cream);
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 
   /* Avatar */
@@ -147,7 +128,7 @@
               <button class="btn btn-primary">Aprovar fechamento</button>
               <button class="btn btn-secondary">Cancelar</button>
               <button class="btn btn-ghost">Ver detalhes</button>
-              <button class="btn btn-outline">Editar</button>
+              <button class="btn btn-light">Editar</button>
               <button class="btn btn-danger">Excluir</button>
               <button class="btn btn-primary" disabled>Aguardando</button>
             </div>
@@ -189,8 +170,8 @@
             <div class="stage col">
               <div class="ip-group">
                 <label class="ip-label">CNPJ</label>
-                <input class="ip" placeholder="00.000.000/0000-00"/>
-                <span class="ip-help">Apenas dígitos. Validação automática.</span>
+                <input class="ip" data-format="cnpj" value="12345678000190" placeholder="00.000.000/0000-00"/>
+                <span class="ip-help">Digite apenas números; o campo formata CNPJ automaticamente.</span>
               </div>
               <div class="ip-group">
                 <label class="ip-label">E-mail comercial</label>
@@ -198,26 +179,20 @@
               </div>
               <div class="ip-group">
                 <label class="ip-label">Meta mensal</label>
-                <input class="ip" value="R$ -" style="border-color:var(--danger)"/>
-                <span class="ip-help" style="color:var(--danger)">Valor obrigatório.</span>
+                <input class="ip" data-format="currency-brl" value="24800000"/>
+                <span class="ip-help">Digite centavos em números; o campo exibe moeda BRL.</span>
               </div>
             </div>
           </div>
 
           <div class="cmp-row" style="margin-top:var(--s-md)">
-            <header><h4>Select &amp; controls</h4><span>toggles · checkbox · radio</span></header>
+            <header><h4>Boolean controls</h4><span>toggle only · no checkbox</span></header>
             <div class="stage">
               <div style="display:flex; align-items:center; gap:var(--s-md);">
-                <div class="toggle on"></div><span style="font-size:13px; color:var(--brand-cream)">Notificações por e-mail</span>
+                <button class="toggle" data-on="true" type="button" aria-checked="true" role="switch"><span class="toggle-track"></span><span class="toggle-label">Notificações por e-mail</span></button>
               </div>
               <div style="display:flex; align-items:center; gap:var(--s-md);">
-                <div class="toggle"></div><span style="font-size:13px; color:var(--text-secondary)">Resumo semanal</span>
-              </div>
-              <div style="display:flex; align-items:center; gap:var(--s-md);">
-                <div class="check on"></div><span style="font-size:13px; color:var(--brand-cream)">Aceito os termos</span>
-              </div>
-              <div style="display:flex; align-items:center; gap:var(--s-md);">
-                <div class="check"></div><span style="font-size:13px; color:var(--text-secondary)">Lembrar de mim</span>
+                <button class="toggle" data-on="false" type="button" aria-checked="false" role="switch"><span class="toggle-track"></span><span class="toggle-label">Resumo semanal</span></button>
               </div>
             </div>
           </div>
@@ -356,7 +331,7 @@
           </div>
 
           <div class="cmp-row" style="margin-top:var(--s-md)">
-            <header><h4>Tooltip</h4><span>cream + black · mono · 11px</span></header>
+            <header><h4>Tooltip</h4><span>dark surface · cream text · mono 11px</span></header>
             <div class="stage">
               <div class="ttip-wrap">
                 <button class="btn btn-secondary">Hover me</button>
@@ -433,7 +408,7 @@
               <tr><td><strong>Modal</strong></td><td class="mono">auto</td><td class="mono">28px</td><td class="mono">16px</td><td class="mono">—</td><td class="token" style="text-align:right">modal</td></tr>
               <tr><td><strong>Badge / Pill</strong></td><td class="mono">22px</td><td class="mono">0 8px</td><td class="mono">4px</td><td class="mono">10/700 caps</td><td class="token" style="text-align:right">badge</td></tr>
               <tr><td><strong>Avatar</strong></td><td class="mono">32px</td><td class="mono">—</td><td class="mono">full</td><td class="mono">12/800</td><td class="token" style="text-align:right">avatar</td></tr>
-              <tr><td><strong>Toggle</strong></td><td class="mono">20px</td><td class="mono">—</td><td class="mono">full</td><td class="mono">—</td><td class="token" style="text-align:right">toggle</td></tr>
+              <tr><td><strong>Toggle</strong></td><td class="mono">24px</td><td class="mono">—</td><td class="mono">full</td><td class="mono">switch</td><td class="token" style="text-align:right">toggle</td></tr>
               <tr><td><strong>Tab</strong></td><td class="mono">~40px</td><td class="mono">10 14px</td><td class="mono">—</td><td class="mono">14/600</td><td class="token" style="text-align:right">tab</td></tr>
             </tbody>
           </table>

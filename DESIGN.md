@@ -223,10 +223,10 @@ components:
       padding: "0 12px"
       hover-bg: "{colors.surface-raised}"
       hover-text: "{colors.brand-cream}"
-    outline:
-      bg: transparent
-      text: "{colors.brand-cream}"
-      border: "{colors.brand-cream}"
+    light:
+      bg: "#FFFFFF"
+      text: "{colors.on-cream}"
+      border: "#FFFFFF"
       hover-bg: "{colors.brand-cream}"
       hover-text: "{colors.on-cream}"
     danger:
@@ -442,7 +442,7 @@ O X compõe a última letra da palavra. Nunca é destacado por gap. Nunca aparec
 | Claro / creme    | `logo-fatax-wordmark-black.svg`        | Preto | Laranja            | Preto           |
 | Laranja Fatax    | `logo-fatax-wordmark-onorange.svg`     | Creme | Creme              | Preto           |
 
-Para o **mark solo** (só o X), mesma matriz de cores em arquivos `logo-fatax-mark-{cream,black,onorange}.svg`. O mono em `logo-fatax-mono.svg` herda `currentColor` — usar APENAS quando uma cor é restrição física (gravação, embossing).
+Para o **mark solo** (só o X), use `logo-fatax-mark-cream.svg` em fundo escuro, `logo-fatax-mark-black.svg` em fundo claro e `logo-fatax-mark-onorange.svg` sobre laranja Fatax. O mark sobre laranja usa fita principal creme e fita de acento preta. O mono em `logo-fatax-mono.svg` herda `currentColor` — usar APENAS quando uma cor é restrição física (gravação, embossing).
 
 #### Espaço livre & tamanho mínimo
 
@@ -465,7 +465,7 @@ Rotacionar, esticar (scaleY/scaleX), trocar cor por hue-rotate, aplicar gradient
 
 Anatomia:
 
-- **A · Mark X** — 26 px, cream + orange (ou cream-only sobre laranja). Sempre à esquerda.
+- **A · Mark X** — 26 px, cream + orange em dark, preto + orange em claro, creme + preto sobre laranja. Sempre à esquerda.
 - **B · "Powered by"** — Inter italic 11 px, cor `text-muted`. Eyebrow.
 - **C · "Fatax Growth"** — Inter bold 13 px, cream. "Growth" em italic laranja (única emoção permitida).
 - **D · Gap interno:** 12 px. **Padding:** 16 × 12 px. **Top:** 1 px border separando da nav acima.
@@ -773,7 +773,7 @@ z-tooltip: 2000  # sempre por cima
 Para cada nav item, `data-tooltip="Label"`. No hover, pseudo-element `::after` renderiza:
 
 - `position: absolute; left: calc(100% + 14px); top: 50%; transform: translateY(−50%) translateX(−4px)`
-- `bg: surface-raised; color: brand-cream; border: 1px solid border; padding: 6px 10px; radius: r-xs`
+- `bg: #101010; color: brand-cream; border: 1px solid rgba(245,235,222,0.16); padding: 6px 10px; radius: r-xs`
 - Fade `dur-fast` + slide 4 px da esquerda.
 - `box-shadow: 0 6px 20px rgba(0,0,0,0.5)`.
 - `z-index: 100`.
@@ -794,13 +794,15 @@ O `.sidebar` precisa de `overflow: visible` e o scroll vive em `.sidebar-scroll`
 2. **Texto branco (`#FFFFFF`) sobre laranja SEMPRE.** Preto sobre laranja passa contraste (6.42:1) mas apaga o CTA.
 3. **Uma ação primária por tela.**
 
-Hierarquia: `primary` (laranja) · `secondary` (surface-raised) · `ghost` (transparent) · `outline` (border cream) · `danger` (vermelho).
+Hierarquia: `primary` (laranja) · `secondary` (surface-raised) · `ghost` (transparent) · `light` (branco utilitário, hover creme) · `danger` (vermelho). `outline` só pode existir como alias legado para o mesmo visual de `light`.
 
 Tamanhos: `sm` 32 px · `default` 40 px · `lg` 48 px. Ghost: 36 px. Padding lateral: 18 px padrão, 12 px ghost, 24 px lg. Radius `sm` (8 px). Weight 700. Tracking 0.
 
 ### 11.2 Input
 
-`surface-sunken` + border `border-soft` em repouso. Focus: bg sobe pra `surface`, border vira `brand-orange` (1 px sólido, sem glow). 40 px altura — alinha com botões. Placeholder em `text-muted`. Padding 14 px horizontal.
+`surface-sunken` + border `border-soft` em repouso. Focus: bg sobe pra `surface`, border vira `brand-orange` (1 px sólido, sem glow). 40 px altura — alinha com botões. Placeholder em `text-muted`. Padding 14 px horizontal. CNPJ e valores em BRL aceitam apenas dígitos e formatam automaticamente para `00.000.000/0000-00` e `R$ 1.234,56`.
+
+Estados booleanos não usam checkbox. Use sempre `Toggle` com track laranja quando ON, track escuro quando OFF, knob branco, foco visível e microanimação.
 
 ### 11.3 Card
 

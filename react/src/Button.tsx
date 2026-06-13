@@ -27,7 +27,8 @@ const VARIANT_CLASS: Record<ButtonVariant, string> = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
   ghost: 'btn-ghost',
-  outline: 'btn-outline',
+  outline: 'btn-light',
+  light: 'btn-light',
   danger: 'btn-danger',
 };
 

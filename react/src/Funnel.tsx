@@ -50,96 +50,13 @@ export function Funnel({
     );
   }
 
-  const maxValue = stages[0].value || 1;
-  const width = 600;
-  const stageHeight = 70;
-  const gap = 8;
-  const totalHeight = stages.length * stageHeight + (stages.length - 1) * gap + 60;
-
   const totalConversion = (stages[stages.length - 1].value / stages[0].value) * 100;
-
-  // Build trapezoid points + per-stage conversion rates
-  let prevWidth = width;
-  const polygons = stages.map((s, i) => {
-    const widthRatio = s.value / maxValue;
-    const stageWidth = width * widthRatio;
-    const xOffset = (width - stageWidth) / 2;
-    const xOffsetPrev = (width - prevWidth) / 2;
-    const y = i * (stageHeight + gap);
-    const opacityTop = 0.95 - i * 0.18;
-    const opacityBot = opacityTop - 0.1;
-    const points = `${xOffsetPrev},${y} ${xOffsetPrev + prevWidth},${y} ${xOffset + stageWidth},${y + stageHeight} ${xOffset},${y + stageHeight}`;
-    const conversion = i === 0 ? null : (s.value / stages[i - 1].value) * 100;
-    const result = {
-      stage: s,
-      points,
-      y,
-      stageWidth,
-      xOffset,
-      opacityTop: Math.max(opacityTop, 0.18),
-      opacityBot: Math.max(opacityBot, 0.12),
-      conversion,
-      gradientId: `fx-funnel-grad-${i}-${Math.random().toString(36).slice(2, 6)}`,
-    };
-    prevWidth = stageWidth;
-    return result;
-  });
-
-  const svg = (
-    <svg className="funnel" viewBox={`0 0 ${width + 90} ${totalHeight}`} xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        {polygons.map((p) => (
-          <linearGradient key={p.gradientId} id={p.gradientId} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#FF4800" stopOpacity={p.opacityTop} />
-            <stop offset="100%" stopColor="#FF4800" stopOpacity={p.opacityBot} />
-          </linearGradient>
-        ))}
-      </defs>
-      {polygons.map((p, i) => (
-        <g key={i}>
-          <polygon points={p.points} fill={`url(#${p.gradientId})`} />
-          <text
-            x={width / 2}
-            y={p.y + stageHeight / 2 - 4}
-            textAnchor="middle"
-            fill={i < 3 ? '#FFFFFF' : '#F5EBDE'}
-            className="funnel-stage-label"
-            style={{ fontSize: Math.max(20 - i, 14) }}
-          >
-            {p.stage.label}
-          </text>
-          <text
-            x={width / 2}
-            y={p.y + stageHeight / 2 + 18}
-            textAnchor="middle"
-            fill={i < 3 ? '#FFFFFF' : '#F5EBDE'}
-            className="funnel-stage-value"
-            opacity={0.92}
-            style={{ fontSize: Math.max(14 - Math.floor(i / 2), 11) }}
-          >
-            {p.stage.value.toLocaleString('pt-BR')}
-            {p.stage.meta ? ` · ${p.stage.meta}` : ''}
-          </text>
-          {p.conversion !== null && (
-            <g>
-              <line x1={width - 12} y1={p.y - gap / 2 + 2} x2={width + 8} y2={p.y - gap / 2 + 2} stroke="var(--border-strong)" strokeWidth="0.75" />
-              <line x1={width + 8} y1={p.y - gap / 2 + 2} x2={width + 8} y2={p.y + stageHeight / 2} stroke="var(--border-strong)" strokeWidth="0.75" />
-              <line x1={width + 8} y1={p.y + stageHeight / 2} x2={width - 12} y2={p.y + stageHeight / 2} stroke="var(--border-strong)" strokeWidth="0.75" />
-              <text x={width + 16} y={p.y + stageHeight / 4 + 4} className="funnel-conversion-rate">
-                {p.conversion.toFixed(0)}%
-              </text>
-            </g>
-          )}
-        </g>
-      ))}
-      <text x={width / 2} y={totalHeight - 32} textAnchor="middle" className="funnel-total">
-        {totalLabel}
-      </text>
-      <text x={width / 2} y={totalHeight - 8} textAnchor="middle" className="funnel-total-value">
-        {totalConversion.toFixed(2).replace('.', ',')}%
-      </text>
-    </svg>
-  );
+  const curves = [
+    { line: 'M0 80 C38 58 72 44 118 42 C170 40 218 54 280 78', wash: 'M0 84 C38 62 72 48 118 46 C170 44 218 58 280 82 L280 150 L0 150 Z' },
+    { line: 'M0 54 C52 86 106 104 160 98 C208 92 238 72 280 62', wash: 'M0 58 C52 90 106 108 160 102 C208 96 238 76 280 66 L280 150 L0 150 Z' },
+    { line: 'M0 88 C56 66 118 62 170 66 C218 70 248 80 280 84', wash: 'M0 92 C56 70 118 66 170 70 C218 74 248 84 280 88 L280 150 L0 150 Z' },
+    { line: 'M0 62 C52 72 102 80 156 82 C204 84 242 86 280 92', wash: 'M0 66 C52 76 102 84 156 86 C204 88 242 90 280 96 L280 150 L0 150 Z' },
+  ];
 
   const headerEl = (title || subtitle) && (
     <div style={{
@@ -163,12 +80,39 @@ export function Funnel({
   const inner = (
     <>
       {headerEl}
-      {rightPanel ? (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 'var(--s-xl)' }}>
-          <div>{svg}</div>
-          <div>{rightPanel}</div>
-        </div>
-      ) : svg}
+      <div className="conversion-grid">
+        {stages.slice(0, 4).map((stage, i) => {
+          const conversion = i === 0 ? null : (stage.value / stages[i - 1].value) * 100;
+          const isDown = conversion !== null && conversion < 50;
+          const curve = curves[i % curves.length];
+          return (
+            <article className="conversion-card" key={`${stage.label}-${i}`}>
+              <div className="conversion-title">{stage.label}</div>
+              <div className="conversion-value">{stage.value.toLocaleString('pt-BR')}</div>
+              <span className={`conversion-badge${isDown ? ' is-down' : ''}`}>
+                {conversion === null ? 'Base' : `${conversion.toFixed(0)}%`}
+              </span>
+              {stage.meta && <span style={{ fontSize: 12, color: 'rgba(10,10,10,0.58)', fontWeight: 700 }}>{stage.meta}</span>}
+              <svg className="conversion-curve" viewBox="0 0 280 150" preserveAspectRatio="none" aria-hidden="true">
+                <path className="wash" d={curve.wash} />
+                <path d={curve.line} />
+              </svg>
+            </article>
+          );
+        })}
+      </div>
+      <div style={{
+        marginTop: 'var(--s-md)',
+        fontFamily: 'var(--font-mono)',
+        fontSize: 11,
+        fontWeight: 700,
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        color: 'var(--text-muted)',
+      }}>
+        {totalLabel}: <span style={{ color: 'var(--brand-orange)' }}>{totalConversion.toFixed(2).replace('.', ',')}%</span>
+      </div>
+      {rightPanel && <div style={{ marginTop: 'var(--s-lg)' }}>{rightPanel}</div>}
     </>
   );
 

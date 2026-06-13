@@ -21,8 +21,8 @@ export type SemanticVariant =
   | 'neutral' | 'orange' | 'cream'
   | 'success' | 'warning' | 'danger' | 'info';
 
-/** Hierarquia de botão — uma primary por tela. */
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'outline' | 'danger';
+/** Hierarquia de botão — uma primary por tela. Outline é mantido como alias light, sem estado vazado. */
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'outline' | 'light' | 'danger';
 
 /** Tamanhos canônicos — sm 32px · md 40px · lg 48px (ghost 36px). */
 export type ButtonSize = 'sm' | 'md' | 'lg';
